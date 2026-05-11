@@ -1,69 +1,445 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl" data-lang="ar">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Devency | وكالة التسويق الإسلامي</title>
-  <link rel="icon" type="image/png" href="logo.png">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Devency | وكالة التسويق الإسلامي</title>
+<link rel="icon" type="image/png" href="logo.png">
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&family=Cairo:wght@300;400;600;700;900&family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --emerald:#0d4f3c;--emerald-mid:#166a4f;--emerald-light:#1a8a64;
+  --emerald-glow:rgba(13,79,60,0.12);
+  --gold:#c9a84c;--gold-light:#e2c06e;--gold-pale:rgba(201,168,76,0.10);
+  --cream:#faf8f3;--off-white:#f3f0ea;--slate:#4a5568;--slate-light:#718096;
+  --dark:#14191e;--white:#ffffff;
+  --shadow-soft:0 4px 24px rgba(0,0,0,0.06);
+  --shadow-card:0 8px 40px rgba(0,0,0,0.10);
+  --shadow-gold:0 4px 20px rgba(201,168,76,0.25);
+  --radius:18px;--radius-lg:26px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Tajawal',sans-serif;background:var(--cream);color:var(--dark);overflow-x:hidden}
+::-webkit-scrollbar{width:4px}
+::-webkit-scrollbar-thumb{background:var(--emerald);border-radius:2px}
 
-  <!-- CSS -->
-  <link rel="stylesheet" href="assets/css/variables.css">
-  <link rel="stylesheet" href="assets/css/base.css">
-  <link rel="stylesheet" href="assets/css/nav.css">
-  <link rel="stylesheet" href="assets/css/hero.css">
-  <link rel="stylesheet" href="assets/css/sections.css">
-  <link rel="stylesheet" href="assets/css/services.css">
-  <link rel="stylesheet" href="assets/css/pricing.css">
-  <link rel="stylesheet" href="assets/css/addons.css">
-  <link rel="stylesheet" href="assets/css/form.css">
-  <link rel="stylesheet" href="assets/css/responsive.css">
+[data-lang="ar"]{direction:rtl}
+[data-lang="en"]{direction:ltr}
+[data-lang="en"] .section-title{text-align:left}
+.ar{display:block}.en{display:none}
+[data-lang="en"] .ar{display:none}
+[data-lang="en"] .en{display:block}
+
+/* ── LANG TOGGLE ── */
+.lang-toggle{display:flex;align-items:center;gap:4px;background:rgba(13,79,60,.08);border:1px solid rgba(13,79,60,.15);border-radius:50px;padding:3px;cursor:pointer;margin-left:14px}
+[data-lang="en"] .lang-toggle{margin-left:0;margin-right:14px}
+.lang-btn{padding:5px 12px;border-radius:50px;font-size:12px;font-weight:700;color:var(--slate);transition:.25s;border:none;background:transparent;cursor:pointer;font-family:'Tajawal',sans-serif}
+.lang-btn.active{background:var(--emerald);color:#fff}
+
+/* ── NAV ── */
+nav{position:fixed;top:0;width:100%;z-index:1000;padding:13px 5%;display:flex;align-items:center;justify-content:space-between;background:rgba(250,248,243,0.92);backdrop-filter:blur(24px);border-bottom:1px solid rgba(201,168,76,0.12);transition:.3s}
+.logo-wrap{display:flex;align-items:center;gap:10px;text-decoration:none}
+.logo-mark img{width:42px;height:42px;border-radius:50%;object-fit:cover}
+.logo-mark svg{width:42px;height:42px}
+.logo-text-col{display:flex;flex-direction:column}
+.logo-name{font-family:'DM Sans',sans-serif;font-weight:900;font-size:22px;color:var(--emerald);line-height:1;letter-spacing:-0.5px}
+.logo-en-sub{font-size:9px;color:var(--gold);font-weight:700;letter-spacing:2.5px;text-transform:uppercase;margin-top:2px}
+.nav-right{display:flex;align-items:center;gap:8px}
+.nav-links{display:flex;gap:24px;list-style:none;margin-left:12px}
+[data-lang="en"] .nav-links{margin-left:0;margin-right:12px}
+.nav-links a{text-decoration:none;color:var(--slate);font-size:14px;font-weight:500;transition:.25s}
+.nav-links a:hover{color:var(--emerald)}
+.nav-cta{background:linear-gradient(135deg,var(--emerald),var(--emerald-light));color:#fff;padding:10px 20px;border-radius:50px;font-size:13px;font-weight:700;text-decoration:none;transition:.3s;box-shadow:0 3px 14px rgba(13,79,60,.25)}
+.nav-cta:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(13,79,60,.35)}
+
+/* ── HERO ── */
+.hero{min-height:100vh;display:flex;align-items:center;position:relative;overflow:hidden;background:linear-gradient(150deg,#081f17 0%,#0d4f3c 50%,#0f5540 100%)}
+.hero-geo{position:absolute;inset:0;opacity:.03;background-image:url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%23fff' stroke-width='0.5'%3E%3Cpolygon points='40,4 76,22 76,58 40,76 4,58 4,22'/%3E%3Cpolygon points='40,14 66,27 66,53 40,66 14,53 14,27'/%3E%3C/g%3E%3C/svg%3E")}
+.hero-orb{position:absolute;border-radius:50%;pointer-events:none}
+.orb1{top:-100px;right:-150px;width:500px;height:500px;background:radial-gradient(circle,rgba(201,168,76,.1),transparent 65%)}
+.orb2{bottom:-180px;left:-100px;width:600px;height:600px;background:radial-gradient(circle,rgba(26,138,100,.15),transparent 65%)}
+.hero-content{position:relative;z-index:2;max-width:1160px;margin:0 auto;padding:130px 5% 90px;display:grid;grid-template-columns:1.15fr .85fr;gap:60px;align-items:center}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(201,168,76,.1);border:1px solid rgba(201,168,76,.25);padding:7px 16px;border-radius:50px;margin-bottom:22px}
+.hero-badge-dot{width:7px;height:7px;background:var(--gold);border-radius:50%;animation:pulse 2s infinite}
+.hero-badge span{color:var(--gold-light);font-size:11.5px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase}
+.hero-h1{font-size:clamp(26px,3.3vw,48px);font-weight:900;color:#fff;line-height:1.2;margin-bottom:18px;font-family:'Cairo',sans-serif}
+.hero-h1 em{color:var(--gold-light);font-style:normal}
+.hero-p{font-size:clamp(14px,1.6vw,19px);color:rgba(255,255,255,.85);font-weight:600;line-height:1.55;margin-bottom:12px}
+.hero-sub{font-size:clamp(13px,1.1vw,15px);color:rgba(255,255,255,.55);line-height:1.78;margin-bottom:32px;border-right:2px solid var(--gold);padding-right:14px}
+[data-lang="en"] .hero-sub{border-right:none;border-left:2px solid var(--gold);padding-right:0;padding-left:14px}
+.hero-ctas{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:24px}
+.btn-primary{background:linear-gradient(135deg,var(--gold),var(--gold-light));color:var(--dark);padding:14px 24px;border-radius:50px;font-weight:800;font-size:14px;text-decoration:none;display:inline-flex;align-items:center;gap:8px;transition:.3s;box-shadow:var(--shadow-gold)}
+.btn-primary:hover{transform:translateY(-3px);box-shadow:0 10px 28px rgba(201,168,76,.4)}
+.btn-secondary{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.18);color:#fff;padding:14px 24px;border-radius:50px;font-weight:600;font-size:14px;text-decoration:none;transition:.3s}
+.btn-secondary:hover{background:rgba(255,255,255,.13);transform:translateY(-3px)}
+.hero-urgency{display:flex;align-items:center;gap:10px;background:rgba(255,255,255,.05);border:1px solid rgba(201,168,76,.18);padding:12px 16px;border-radius:12px;margin-bottom:14px}
+.hero-urgency p{font-size:13px;color:rgba(255,255,255,.78)}
+.hero-urgency strong{color:var(--gold-light)}
+.trust-badges{display:flex;gap:9px;flex-wrap:wrap}
+.trust-b{display:flex;align-items:center;gap:6px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.09);padding:6px 12px;border-radius:50px}
+.trust-b span{font-size:11.5px;color:rgba(255,255,255,.62)}
+.hero-float{background:rgba(255,255,255,.06);backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,.11);border-radius:var(--radius-lg);padding:30px;animation:float 6s ease-in-out infinite}
+.float-title{font-size:11.5px;color:rgba(255,255,255,.45);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:18px;text-align:center}
+.float-items{display:flex;flex-direction:column;gap:11px}
+.float-item{display:flex;align-items:center;gap:11px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);border-radius:13px;padding:13px 15px}
+.float-icon{font-size:20px;flex-shrink:0}
+.float-text strong{color:var(--gold-light);display:block;font-size:13.5px;margin-bottom:1px}
+.float-text span{font-size:12px;color:rgba(255,255,255,.65);line-height:1.4}
+.float-foot{margin-top:16px;text-align:center;font-size:11.5px;color:rgba(255,255,255,.38)}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-13px)}}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.35}}
+
+/* ── LOSS FRAMING ── */
+.loss-section{background:linear-gradient(135deg,#1a0a0a 0%,#2d1515 50%,#1a0a0a 100%);padding:80px 5%;position:relative;overflow:hidden}
+.loss-section::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 70% 50%,rgba(220,38,38,.08),transparent 60%)}
+.loss-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+.loss-title-red{font-family:'Cairo',sans-serif;font-size:clamp(22px,2.8vw,38px);font-weight:900;color:#fff;line-height:1.25;margin-bottom:16px}
+.loss-title-red em{color:#fca5a5;font-style:normal}
+.loss-stat-row{display:flex;flex-direction:column;gap:12px;margin-top:24px}
+.loss-stat{display:flex;align-items:flex-start;gap:14px;background:rgba(220,38,38,.06);border:1px solid rgba(220,38,38,.15);border-radius:14px;padding:16px}
+.loss-stat-icon{font-size:22px;flex-shrink:0;margin-top:2px}
+.loss-stat-text strong{color:#fca5a5;font-size:15px;display:block;margin-bottom:2px}
+.loss-stat-text span{color:rgba(255,255,255,.55);font-size:13px}
+.loss-calc{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);border-radius:var(--radius-lg);padding:32px}
+.calc-title{color:#fff;font-size:15px;font-weight:800;margin-bottom:22px;text-align:center}
+.calc-label{font-size:12px;color:rgba(255,255,255,.5);font-weight:600;margin-bottom:8px;display:block}
+.calc-input-wrap{position:relative;margin-bottom:16px}
+.calc-input{width:100%;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:12px;padding:11px 16px;font-size:15px;color:#fff;font-family:'Tajawal',sans-serif;outline:none;transition:.3s}
+.calc-input:focus{border-color:var(--gold);background:rgba(255,255,255,.09)}
+.calc-result{background:linear-gradient(135deg,rgba(201,168,76,.12),rgba(201,168,76,.06));border:1px solid rgba(201,168,76,.25);border-radius:14px;padding:20px;text-align:center;margin-top:8px}
+.calc-result-label{font-size:12px;color:rgba(255,255,255,.45);margin-bottom:6px}
+.calc-result-amount{font-size:36px;font-weight:900;color:var(--gold-light);font-family:'DM Sans',sans-serif;line-height:1}
+.calc-result-sub{font-size:12px;color:rgba(255,255,255,.45);margin-top:4px}
+.calc-cta-small{display:block;text-align:center;margin-top:14px;font-size:13px;color:var(--gold-light);font-weight:700;text-decoration:none;border:1px solid rgba(201,168,76,.3);padding:10px 20px;border-radius:50px;transition:.3s}
+.calc-cta-small:hover{background:rgba(201,168,76,.1)}
+@media(max-width:900px){.loss-inner{grid-template-columns:1fr}}
+
+/* ── ABOUT BAR ── */
+.about-bar{background:var(--white);padding:64px 5%;border-bottom:1px solid rgba(0,0,0,.05)}
+.about-inner{max-width:860px;margin:0 auto;text-align:center}
+.about-tagline{font-family:'Cairo',sans-serif;font-size:clamp(19px,2.4vw,29px);font-weight:900;color:var(--dark);line-height:1.4;margin-bottom:14px}
+.about-tagline em{color:var(--emerald)}
+.about-sub{font-size:14.5px;color:var(--slate);line-height:1.75;max-width:660px;margin:0 auto 26px}
+.about-pills{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+.about-pill{background:var(--emerald-glow);border:1px solid rgba(13,79,60,.14);color:var(--emerald);padding:7px 16px;border-radius:50px;font-size:12.5px;font-weight:700}
+
+/* ── SECTIONS ── */
+section{padding:90px 5%}
+.section-tag{display:inline-flex;align-items:center;gap:7px;background:var(--emerald-glow);border:1px solid rgba(13,79,60,.14);padding:7px 16px;border-radius:50px;font-size:11px;font-weight:700;color:var(--emerald);letter-spacing:1.8px;text-transform:uppercase;margin-bottom:16px}
+.section-tag-dot{width:5px;height:5px;background:var(--emerald);border-radius:50%}
+.section-title{font-family:'Cairo',sans-serif;font-size:clamp(24px,3vw,40px);font-weight:900;color:var(--dark);line-height:1.22;margin-bottom:12px}
+.section-title em{color:var(--emerald);font-style:normal}
+.section-sub{font-size:clamp(13.5px,1.3vw,16px);color:var(--slate);line-height:1.72}
+
+/* ── SERVICES ── */
+.svc-dark{background:var(--dark)}
+.svc-tabs{max-width:1160px;margin:0 auto}
+.svc-tab-nav{display:flex;gap:10px;justify-content:center;margin:40px 0 36px;flex-wrap:wrap}
+.svc-tab-btn{padding:11px 24px;border-radius:50px;font-size:14px;font-weight:700;border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.04);color:rgba(255,255,255,.6);cursor:pointer;font-family:'Tajawal',sans-serif;transition:.3s}
+.svc-tab-btn.active{background:var(--gold);color:var(--dark);border-color:transparent}
+.svc-tab-btn:hover:not(.active){border-color:rgba(201,168,76,.3);color:var(--gold-light)}
+.svc-panel{display:none}
+.svc-panel.active{display:block}
+.svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.svc-card{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);border-radius:var(--radius-lg);padding:28px 22px;transition:.4s;position:relative;overflow:hidden}
+.svc-card::after{content:'';position:absolute;bottom:0;right:0;left:0;height:2px;background:linear-gradient(90deg,var(--emerald-light),var(--gold));transform:scaleX(0);transform-origin:right;transition:.4s}
+.svc-card:hover{background:rgba(255,255,255,.07);transform:translateY(-5px)}
+.svc-card:hover::after{transform:scaleX(1)}
+.svc-icon{font-size:32px;margin-bottom:16px;display:block}
+.svc-title{font-size:17px;font-weight:800;color:#fff;margin-bottom:8px}
+.svc-desc{font-size:13px;color:rgba(255,255,255,.5);line-height:1.68;margin-bottom:16px}
+.svc-list{list-style:none;display:flex;flex-direction:column;gap:7px}
+.svc-list li{display:flex;align-items:center;gap:8px;font-size:13px;color:rgba(255,255,255,.68)}
+.svc-list li::before{content:'✓';color:var(--gold);font-weight:800;font-size:11px}
+.svc-cta-row{text-align:center;margin-top:36px}
+.svc-cta-row a{background:linear-gradient(135deg,var(--gold),var(--gold-light));color:var(--dark);padding:14px 30px;border-radius:50px;font-weight:800;font-size:14px;text-decoration:none;display:inline-flex;align-items:center;gap:8px;transition:.3s;box-shadow:var(--shadow-gold)}
+.svc-cta-row a:hover{transform:translateY(-2px);box-shadow:0 10px 28px rgba(201,168,76,.4)}
+
+/* ── PRICING ── */
+.pricing-section{background:var(--cream)}
+.pricing-tabs{max-width:1200px;margin:0 auto}
+.pricing-tab-nav{display:flex;gap:10px;justify-content:center;margin:40px 0 36px;flex-wrap:wrap}
+.pricing-tab-btn{padding:12px 28px;border-radius:50px;font-size:14px;font-weight:700;border:2px solid rgba(13,79,60,.15);background:transparent;color:var(--slate);cursor:pointer;font-family:'Tajawal',sans-serif;transition:.3s}
+.pricing-tab-btn.active{background:var(--emerald);color:#fff;border-color:var(--emerald)}
+.pricing-tab-btn:hover:not(.active){border-color:var(--emerald);color:var(--emerald)}
+.pricing-panel{display:none}
+.pricing-panel.active{display:block}
+.pkg-intro{text-align:center;max-width:680px;margin:0 auto 36px;font-size:14.5px;color:var(--slate);line-height:1.7}
+.pkg-grid{display:grid;gap:20px}
+.pkg-grid-2{grid-template-columns:repeat(2,1fr)}
+.pkg-grid-4{grid-template-columns:repeat(4,1fr)}
+.pkg-card{background:var(--white);border-radius:var(--radius-lg);padding:30px 24px;border:1px solid rgba(0,0,0,.07);transition:.4s;position:relative;overflow:hidden}
+.pkg-card:hover{transform:translateY(-6px);box-shadow:var(--shadow-card)}
+.pkg-card.featured{background:linear-gradient(145deg,#0d4f3c,#166a4f);border:none}
+.pkg-card.popular{border:2px solid var(--emerald)}
+.pkg-card.anchor{background:linear-gradient(145deg,#14191e,#1c2229);border:2px solid var(--gold);box-shadow:0 0 40px rgba(201,168,76,.15),0 8px 40px rgba(0,0,0,.3)}
+.pkg-card.anchor:hover{transform:translateY(-8px);box-shadow:0 0 60px rgba(201,168,76,.2),0 16px 60px rgba(0,0,0,.35)}
+.card-badge{display:inline-block;font-size:10px;font-weight:700;padding:5px 12px;border-radius:50px;margin-bottom:13px;letter-spacing:1.2px;text-transform:uppercase}
+.b-default{background:var(--emerald-glow);color:var(--emerald)}
+.b-hot{background:var(--emerald);color:#fff}
+.b-gold{background:rgba(201,168,76,.15);color:#a07c28}
+.b-best{background:var(--gold);color:var(--dark)}
+.b-roi{background:linear-gradient(135deg,var(--gold),var(--gold-light));color:var(--dark);box-shadow:0 3px 12px rgba(201,168,76,.4)}
+.pkg-name{font-size:11.5px;font-weight:800;color:var(--slate);letter-spacing:2px;text-transform:uppercase;margin-bottom:6px}
+.pkg-name.w{color:rgba(255,255,255,.5)}
+.pkg-name.g{color:var(--gold-light)}
+.pkg-price{font-size:38px;font-weight:900;color:var(--emerald);font-family:'DM Sans',sans-serif;line-height:1;margin-bottom:2px}
+.pkg-price.w{color:var(--gold-light)}
+.pkg-price-prefix{font-size:13px;font-weight:600;color:var(--slate-light);display:block;margin-bottom:2px}
+.pkg-price-prefix.w{color:rgba(255,255,255,.4)}
+.pkg-period{font-size:12.5px;color:var(--slate-light);margin-bottom:5px}
+.pkg-period.w{color:rgba(255,255,255,.45)}
+.pkg-tagline{font-size:13px;color:var(--slate);margin-bottom:18px;line-height:1.5}
+.pkg-tagline.w{color:rgba(255,255,255,.62)}
+.pkg-divider{height:1px;background:rgba(0,0,0,.07);margin-bottom:16px}
+.pkg-divider.w{background:rgba(255,255,255,.11)}
+.pkg-features-summary{list-style:none;display:flex;flex-direction:column;gap:8px;margin-bottom:12px}
+.pkg-features-summary li{display:flex;align-items:flex-start;gap:8px;font-size:13px;color:var(--slate)}
+.pkg-features-summary li.w{color:rgba(255,255,255,.75)}
+.pkg-features-summary li.g{color:rgba(255,255,255,.85)}
+.pkg-features-summary li::before{content:'✓';color:var(--emerald);font-weight:800;font-size:12px;flex-shrink:0;margin-top:1px}
+.pkg-features-summary li.w::before{color:var(--gold-light)}
+.pkg-features-summary li.g::before{color:var(--gold)}
+.pkg-more-btn{display:block;width:100%;background:none;border:1px dashed rgba(13,79,60,.2);border-radius:10px;padding:8px;font-size:12.5px;color:var(--emerald);cursor:pointer;font-family:'Tajawal',sans-serif;font-weight:600;transition:.25s;margin-bottom:16px}
+.pkg-more-btn.w{border-color:rgba(255,255,255,.15);color:rgba(255,255,255,.55)}
+.pkg-more-btn:hover{background:var(--emerald-glow)}
+.pkg-extra{display:none;margin-bottom:12px}
+.pkg-extra.open{display:block}
+.pkg-extra ul{list-style:none;display:flex;flex-direction:column;gap:7px}
+.pkg-extra ul li{display:flex;align-items:flex-start;gap:8px;font-size:13px;color:var(--slate-light)}
+.pkg-extra ul li.w{color:rgba(255,255,255,.55)}
+.pkg-extra ul li::before{content:'·';color:var(--gold);font-weight:800;flex-shrink:0}
+.pkg-cta{display:block;text-align:center;padding:13px;border-radius:50px;font-weight:800;font-size:14px;text-decoration:none;transition:.3s;cursor:pointer;border:none;font-family:'Tajawal',sans-serif;width:100%}
+.cta-outline{background:var(--off-white);color:var(--emerald);border:2px solid rgba(13,79,60,.14)}
+.cta-outline:hover{background:var(--emerald);color:#fff}
+.cta-solid{background:var(--emerald);color:#fff}
+.cta-solid:hover{background:var(--emerald-light)}
+.cta-gold{background:linear-gradient(135deg,var(--gold),var(--gold-light));color:var(--dark)}
+.cta-gold:hover{transform:translateY(-2px);box-shadow:var(--shadow-gold)}
+.anchor-note{text-align:center;margin-top:20px;font-size:13px;color:var(--slate);max-width:600px;margin-left:auto;margin-right:auto;line-height:1.6;background:rgba(201,168,76,.06);border:1px solid rgba(201,168,76,.15);padding:14px 20px;border-radius:12px}
+
+/* ── ADD-ONS ── */
+.addons-bg{background:var(--off-white)}
+.addon-note{max-width:680px;margin:0 auto 36px;text-align:center;font-size:14px;color:var(--slate);line-height:1.7;background:var(--white);border-radius:var(--radius);padding:18px 22px;border:1px solid rgba(0,0,0,.06)}
+.addon-note strong{color:var(--emerald)}
+.addons-grid{max-width:1000px;margin:0 auto 40px;display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.addon-card{background:var(--white);border-radius:var(--radius);padding:26px;border:1px solid rgba(0,0,0,.06);transition:.3s;position:relative;overflow:hidden}
+.addon-card::before{content:'';position:absolute;top:0;right:0;left:0;height:3px;background:linear-gradient(90deg,var(--emerald),var(--gold))}
+.addon-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-card)}
+.addon-icon{font-size:28px;margin-bottom:12px}
+.addon-title{font-size:15px;font-weight:800;color:var(--dark);margin-bottom:5px}
+.addon-price{font-size:14px;font-weight:700;color:var(--emerald);margin-bottom:8px}
+.addon-desc{font-size:13px;color:var(--slate);line-height:1.6}
+.addon-cta{margin-top:14px;display:inline-block;font-size:12.5px;font-weight:700;color:var(--emerald);text-decoration:none;border:1px solid rgba(13,79,60,.2);padding:7px 16px;border-radius:50px;transition:.25s;cursor:pointer;background:none;font-family:'Tajawal',sans-serif}
+.addon-cta:hover{background:var(--emerald);color:#fff}
+.bundle-card{max-width:760px;margin:0 auto;background:linear-gradient(135deg,#14191e,#1c2229);border:2px solid rgba(201,168,76,.4);border-radius:var(--radius-lg);padding:36px;position:relative;overflow:hidden;box-shadow:0 0 50px rgba(201,168,76,.12),0 8px 40px rgba(0,0,0,.3)}
+.bundle-card::before{content:'';position:absolute;top:-60px;left:-60px;width:200px;height:200px;background:radial-gradient(circle,rgba(201,168,76,.12),transparent 65%)}
+.bundle-badge{display:inline-block;background:linear-gradient(135deg,#ef4444,#dc2626);color:#fff;font-size:10px;font-weight:800;padding:5px 14px;border-radius:50px;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:14px;animation:pulse 2s infinite}
+.bundle-title{font-family:'Cairo',sans-serif;font-size:clamp(20px,2.5vw,30px);font-weight:900;color:#fff;margin-bottom:8px}
+.bundle-price-row{display:flex;align-items:center;gap:16px;margin-bottom:16px;flex-wrap:wrap}
+.bundle-old-price{font-size:20px;color:rgba(255,255,255,.35);text-decoration:line-through;font-family:'DM Sans',sans-serif}
+.bundle-new-price{font-size:44px;font-weight:900;color:var(--gold-light);font-family:'DM Sans',sans-serif;line-height:1}
+.bundle-includes{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:20px}
+.bundle-item{display:flex;align-items:center;gap:6px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);padding:8px 14px;border-radius:50px;font-size:13px;color:rgba(255,255,255,.8)}
+.bundle-item::before{content:'✓';color:var(--gold);font-weight:800}
+
+/* ── STRATEGIC VISION ── */
+.vision-section{background:var(--dark)}
+.vision-grid{max-width:1160px;margin:48px auto 0;display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.vision-card{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:var(--radius-lg);overflow:hidden;transition:.4s}
+.vision-card:hover{transform:translateY(-6px);border-color:rgba(201,168,76,.25);box-shadow:0 20px 60px rgba(0,0,0,.3)}
+.vision-header{padding:20px 22px;border-bottom:1px solid rgba(255,255,255,.06)}
+.vision-tag{font-size:10px;font-weight:700;color:var(--gold-light);letter-spacing:2px;text-transform:uppercase;margin-bottom:8px;display:block}
+.vision-sector{font-size:18px;font-weight:900;color:#fff;margin-bottom:4px}
+.vision-subtitle{font-size:12.5px;color:rgba(255,255,255,.45)}
+.vision-dashboard{padding:18px 22px;background:rgba(255,255,255,.02)}
+.dash-row{display:flex;gap:10px;margin-bottom:10px}
+.dash-metric{flex:1;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:12px;text-align:center}
+.dash-metric-val{font-size:18px;font-weight:900;color:var(--gold-light);font-family:'DM Sans',sans-serif;line-height:1}
+.dash-metric-lbl{font-size:10px;color:rgba(255,255,255,.4);margin-top:3px}
+.dash-bar-row{margin-top:8px}
+.dash-bar-label{display:flex;justify-content:space-between;font-size:11px;color:rgba(255,255,255,.45);margin-bottom:4px}
+.dash-bar{height:6px;background:rgba(255,255,255,.06);border-radius:3px;overflow:hidden;margin-bottom:6px}
+.dash-bar-fill{height:100%;border-radius:3px;background:linear-gradient(90deg,var(--emerald-light),var(--gold));transition:width 1.2s ease}
+.vision-footer{padding:16px 22px;border-top:1px solid rgba(255,255,255,.06)}
+.vision-audience{font-size:12px;color:rgba(255,255,255,.45);margin-bottom:8px}
+.vision-audience strong{color:rgba(255,255,255,.7)}
+.vision-strategy{font-size:12.5px;color:rgba(255,255,255,.55);line-height:1.6}
+
+/* ── WHY US ── */
+.why-section{background:var(--white)}
+.why-grid{max-width:1060px;margin:48px auto 0;display:grid;grid-template-columns:repeat(5,1fr);gap:16px}
+.why-card{background:var(--cream);border-radius:var(--radius);padding:24px 16px;text-align:center;border:1px solid rgba(0,0,0,.05);transition:.3s;position:relative;overflow:hidden}
+.why-card::before{content:'';position:absolute;top:0;right:0;left:0;height:3px;background:linear-gradient(90deg,var(--emerald),var(--gold))}
+.why-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-card)}
+.why-icon{font-size:32px;margin-bottom:12px;display:block}
+.why-title{font-size:13.5px;font-weight:800;color:var(--dark);margin-bottom:6px}
+.why-desc{font-size:12px;color:var(--slate);line-height:1.6}
+
+/* ── RISK ── */
+.risk-section{background:linear-gradient(135deg,#081f17,#0d4f3c)}
+.risk-inner{max-width:720px;margin:0 auto;text-align:center}
+.risk-icon{font-size:54px;margin-bottom:20px}
+.risk-title{font-family:'Cairo',sans-serif;font-size:clamp(21px,2.7vw,34px);font-weight:900;color:#fff;margin-bottom:12px;line-height:1.3}
+.risk-title em{color:var(--gold-light);font-style:normal}
+.risk-desc{font-size:14.5px;color:rgba(255,255,255,.68);line-height:1.75;margin-bottom:26px}
+.risk-box{display:flex;align-items:center;justify-content:center;gap:11px;background:rgba(201,168,76,.07);border:1px solid rgba(201,168,76,.25);padding:16px 24px;border-radius:15px;margin-bottom:26px}
+.risk-box p{font-size:13.5px;color:rgba(255,255,255,.8);line-height:1.6}
+.risk-box strong{color:var(--gold-light)}
+
+/* ── FAQ ── */
+.faq-section{background:var(--off-white)}
+.faq-grid{max-width:760px;margin:48px auto 0;display:flex;flex-direction:column;gap:10px}
+.faq-item{background:var(--white);border-radius:var(--radius);border:1px solid rgba(0,0,0,.07);overflow:hidden}
+.faq-q{padding:18px 20px;display:flex;align-items:center;justify-content:space-between;cursor:pointer;transition:.25s}
+.faq-q:hover{background:var(--cream)}
+.faq-q-text{font-size:14.5px;font-weight:700;color:var(--dark)}
+.faq-icon{width:26px;height:26px;background:var(--emerald-glow);border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--emerald);font-size:16px;font-weight:700;transition:.3s;flex-shrink:0}
+.faq-a{max-height:0;overflow:hidden;transition:.4s}
+.faq-a-inner{padding:0 20px 18px;font-size:13.5px;color:var(--slate);line-height:1.72}
+.faq-item.open .faq-a{max-height:280px}
+.faq-item.open .faq-icon{transform:rotate(45deg);background:var(--emerald);color:#fff}
+
+/* ── FORM ── */
+.form-section{background:linear-gradient(180deg,var(--dark) 0%,#0c1610 100%)}
+.form-wrapper{max-width:680px;margin:48px auto 0}
+
+.form-summary-bar{background:rgba(201,168,76,.08);border:1px solid rgba(201,168,76,.2);border-radius:14px;padding:14px 18px;margin-bottom:20px;display:none}
+.form-summary-bar.visible{display:block}
+.form-summary-title{font-size:11px;font-weight:700;color:var(--gold-light);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:10px}
+.form-summary-items{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:10px}
+.form-summary-chip{display:flex;align-items:center;gap:5px;background:rgba(201,168,76,.1);border:1px solid rgba(201,168,76,.2);padding:4px 10px;border-radius:50px;font-size:12px;color:rgba(255,255,255,.8)}
+.form-summary-chip span.check{color:var(--gold);font-weight:800}
+.form-summary-total{font-size:13px;color:rgba(255,255,255,.6)}
+.form-summary-total strong{color:var(--gold-light);font-size:15px}
+
+.form-card{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:var(--radius-lg);padding:44px;backdrop-filter:blur(20px)}
+.progress-wrap{position:sticky;top:0;z-index:10;background:rgba(20,25,30,.9);backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,255,255,.06);padding:14px 44px;margin:-44px -44px 28px;border-radius:var(--radius-lg) var(--radius-lg) 0 0}
+.progress-bar{display:flex;gap:6px;margin-bottom:6px}
+.progress-step{flex:1;height:3px;background:rgba(255,255,255,.09);border-radius:2px;transition:.35s}
+.progress-step.active{background:var(--gold)}
+.progress-step.done{background:var(--emerald-light)}
+.progress-meta{display:flex;justify-content:space-between;font-size:11px;color:rgba(255,255,255,.3)}
+.step-title{font-size:20px;font-weight:800;color:#fff;margin-bottom:20px}
+.form-group{margin-bottom:16px}
+.form-label{display:block;font-size:12.5px;font-weight:600;color:rgba(255,255,255,.6);margin-bottom:6px}
+.form-input{width:100%;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:13px;padding:12px 16px;font-size:14.5px;color:#fff;font-family:'Tajawal',sans-serif;transition:.3s;outline:none;-webkit-appearance:none}
+.form-input:focus{border-color:var(--gold);background:rgba(255,255,255,.08)}
+.form-input::placeholder{color:rgba(255,255,255,.25)}
+.form-input option{background:#1a1f2e;color:#fff}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:13px}
+.form-section-divider{font-size:11px;font-weight:700;color:rgba(255,255,255,.35);letter-spacing:2px;text-transform:uppercase;margin:22px 0 14px;padding-bottom:8px;border-bottom:1px solid rgba(255,255,255,.07)}
+
+/* Checkbox cards */
+.checkbox-cards-grid{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-bottom:6px}
+.checkbox-card{display:flex;align-items:flex-start;gap:10px;background:rgba(255,255,255,.03);border:1.5px solid rgba(255,255,255,.08);border-radius:13px;padding:14px;cursor:pointer;transition:.25s;position:relative;user-select:none}
+.checkbox-card:hover{border-color:rgba(201,168,76,.3);background:rgba(201,168,76,.04)}
+.checkbox-card.selected{border-color:var(--gold);background:rgba(201,168,76,.1)}
+.checkbox-card input[type="checkbox"]{position:absolute;opacity:0;pointer-events:none}
+.checkbox-card-check{width:18px;height:18px;border:2px solid rgba(255,255,255,.2);border-radius:5px;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;transition:.25s;background:transparent}
+.checkbox-card.selected .checkbox-card-check{background:var(--gold);border-color:var(--gold);color:var(--dark)}
+.checkbox-card-check svg{display:none;width:11px;height:11px}
+.checkbox-card.selected .checkbox-card-check svg{display:block}
+.checkbox-card-body{flex:1}
+.checkbox-card-name{font-size:13px;font-weight:800;color:#fff;display:block;margin-bottom:1px}
+.checkbox-card-price{font-size:11.5px;color:var(--gold-light);font-weight:600}
+.checkbox-card-type{font-size:10px;color:rgba(255,255,255,.35);text-transform:uppercase;letter-spacing:1px;margin-top:1px;display:block}
+
+/* Radio group */
+.radio-group{display:flex;flex-direction:column;gap:8px}
+.radio-opt{display:flex;align-items:center;gap:10px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);border-radius:11px;padding:12px 14px;cursor:pointer;transition:.25s}
+.radio-opt:hover{border-color:rgba(201,168,76,.3);background:rgba(201,168,76,.04)}
+.radio-opt input{width:16px;height:16px;accent-color:var(--gold)}
+.radio-opt span{font-size:13.5px;color:rgba(255,255,255,.75)}
+
+.form-nav{display:flex;gap:10px;margin-top:26px}
+.form-btn-next{flex:1;background:linear-gradient(135deg,var(--gold),var(--gold-light));color:var(--dark);border:none;border-radius:50px;padding:14px;font-size:14.5px;font-weight:800;cursor:pointer;font-family:'Tajawal',sans-serif;transition:.3s}
+.form-btn-next:hover:not(:disabled){transform:translateY(-2px);box-shadow:var(--shadow-gold)}
+.form-btn-next:disabled{opacity:.45;cursor:not-allowed;transform:none}
+.form-btn-back{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.09);color:rgba(255,255,255,.6);border-radius:50px;padding:14px 20px;font-size:13.5px;cursor:pointer;font-family:'Tajawal',sans-serif;transition:.25s}
+.form-btn-back:hover{background:rgba(255,255,255,.09)}
+.form-step{display:none}
+.form-step.active{display:block}
+.form-validation-hint{font-size:12px;color:rgba(201,168,76,.7);margin-top:8px;display:none}
+.form-validation-hint.show{display:block}
+.success-screen{text-align:center;display:none;padding:16px 0}
+.success-icon{font-size:56px;margin-bottom:18px}
+.success-title{font-size:24px;font-weight:900;color:#fff;margin-bottom:10px}
+.success-desc{font-size:13.5px;color:rgba(255,255,255,.58);line-height:1.72;margin-bottom:24px}
+.form-note{font-size:11.5px;color:rgba(255,255,255,.3);text-align:center;margin-top:16px;line-height:1.6}
+.form-error{display:none;background:rgba(220,38,38,.1);border:1px solid rgba(220,38,38,.3);border-radius:11px;padding:11px;margin-top:14px;font-size:13px;color:#fca5a5;text-align:center}
+
+/* ── FOOTER ── */
+footer{background:var(--dark);padding:52px 5% 26px;border-top:1px solid rgba(255,255,255,.04)}
+.footer-inner{max-width:1160px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr;gap:52px;margin-bottom:40px}
+.footer-brand-name{font-family:'DM Sans',sans-serif;font-size:22px;font-weight:900;color:#fff;letter-spacing:-0.5px}
+.footer-brand-sub{font-size:9px;color:var(--gold);letter-spacing:2.5px;text-transform:uppercase;margin-top:2px}
+.footer-desc{font-size:12.5px;color:rgba(255,255,255,.38);line-height:1.72;margin-top:13px}
+.footer-col-title{font-size:11.5px;font-weight:800;color:#fff;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:16px}
+.footer-links{list-style:none;display:flex;flex-direction:column;gap:10px}
+.footer-links a{font-size:13px;color:rgba(255,255,255,.4);text-decoration:none;transition:.25s}
+.footer-links a:hover{color:var(--gold-light)}
+.footer-bottom{border-top:1px solid rgba(255,255,255,.05);padding-top:20px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:11px}
+.footer-copy{font-size:11.5px;color:rgba(255,255,255,.26)}
+.footer-sharia{display:flex;align-items:center;gap:6px;background:rgba(201,168,76,.04);border:1px solid rgba(201,168,76,.12);padding:6px 13px;border-radius:50px}
+.footer-sharia span{font-size:11.5px;color:rgba(255,255,255,.42)}
+
+/* ── STICKY CTA ── */
+.sticky-cta{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);z-index:999;display:flex;align-items:center;gap:10px;background:rgba(15,22,18,.96);border:1px solid rgba(201,168,76,.25);padding:12px 16px;border-radius:50px;box-shadow:0 8px 40px rgba(0,0,0,.3);backdrop-filter:blur(20px);transition:.45s;opacity:0;pointer-events:none}
+.sticky-cta.show{opacity:1;pointer-events:auto}
+.sticky-dot{width:7px;height:7px;background:#22c55e;border-radius:50%;animation:pulse 2s infinite;flex-shrink:0}
+.sticky-seats{font-size:12px;color:var(--gold-light);font-weight:600;white-space:nowrap}
+.sticky-btn{background:linear-gradient(135deg,var(--gold),var(--gold-light));color:var(--dark);padding:9px 18px;border-radius:50px;font-size:12.5px;font-weight:800;text-decoration:none;white-space:nowrap}
+
+/* ── REVEAL ── */
+.reveal{opacity:0;transform:translateY(26px);transition:opacity .6s ease,transform .6s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+
+/* ── RESPONSIVE ── */
+@media(max-width:1100px){
+  .pkg-grid-4{grid-template-columns:repeat(2,1fr)}
+  .addons-grid{grid-template-columns:repeat(2,1fr)}
+  .vision-grid{grid-template-columns:1fr}
+}
+@media(max-width:1024px){
+  .hero-content{grid-template-columns:1fr;gap:32px}
+  .hero-float{display:none}
+  .svc-grid{grid-template-columns:repeat(2,1fr)}
+  .pkg-grid-2{grid-template-columns:1fr}
+  .why-grid{grid-template-columns:repeat(3,1fr)}
+  .footer-inner{grid-template-columns:1fr 1fr}
+}
+@media(max-width:768px){
+  nav{padding:11px 4%}
+  .nav-links{display:none}
+  .svc-grid,.why-grid,.addons-grid{grid-template-columns:1fr}
+  .pkg-grid-4{grid-template-columns:1fr}
+  .form-row{grid-template-columns:1fr}
+  .form-card{padding:24px 16px}
+  .progress-wrap{padding:14px 16px;margin:-24px -16px 20px}
+  .checkbox-cards-grid{grid-template-columns:1fr}
+  .footer-inner{grid-template-columns:1fr}
+  .sticky-cta{width:92%;justify-content:center;flex-wrap:wrap;bottom:13px}
+  .bundle-card{padding:24px}
+}
+</style>
 </head>
 <body>
 
-<!-- SVG Icons Sprite -->
-<div aria-hidden="true">
-  <object data="assets/icons/icons.svg" style="display:none"></object>
-</div>
-<!-- Inline the sprite so <use> works cross-browser without a server -->
-<svg xmlns="http://www.w3.org/2000/svg" style="display:none">
-  <symbol id="icon-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></symbol>
-  <symbol id="icon-lightning" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></symbol>
-  <symbol id="icon-shield" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></symbol>
-  <symbol id="icon-chart" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></symbol>
-  <symbol id="icon-globe" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></symbol>
-  <symbol id="icon-handshake" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.42 4.58a5.4 5.4 0 0 0-7.65 0l-.77.78-.77-.78a5.4 5.4 0 0 0-7.65 7.65l1.06 1.06L12 21.23l7.36-7.94 1.06-1.06a5.4 5.4 0 0 0 0-7.65z"/></symbol>
-  <symbol id="icon-mosque" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18"/><path d="M5 21V10.85A4 4 0 0 1 9 7h0a4 4 0 0 0 4-4 4 4 0 0 0 4 4h0a4 4 0 0 1 4 3.85V21"/><path d="M10 21v-5a2 2 0 0 1 2-2h0a2 2 0 0 1 2 2v5"/></symbol>
-  <symbol id="icon-target" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></symbol>
-  <symbol id="icon-megaphone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l19-9-9 19-2-8-8-2z"/></symbol>
-  <symbol id="icon-settings" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M4.93 4.93a10 10 0 0 0 0 14.14"/></symbol>
-  <symbol id="icon-pen" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></symbol>
-  <symbol id="icon-search" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></symbol>
-  <symbol id="icon-email" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></symbol>
-  <symbol id="icon-money-down" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 1v22M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/><polyline points="17 19 12 24 7 19"/></symbol>
-  <symbol id="icon-chart-down" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 18 13.5 8.5 8.5 13.5 1 6"/><polyline points="17 18 23 18 23 12"/></symbol>
-  <symbol id="icon-clock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></symbol>
-  <symbol id="icon-calculator" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/><line x1="8" y1="10" x2="10" y2="10"/><line x1="14" y1="10" x2="16" y2="10"/><line x1="8" y1="14" x2="10" y2="14"/><line x1="14" y1="14" x2="16" y2="14"/><line x1="8" y1="18" x2="16" y2="18"/></symbol>
-  <symbol id="icon-eye" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></symbol>
-  <symbol id="icon-rocket" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/><path d="M12 15l-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/></symbol>
-  <symbol id="icon-website" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></symbol>
-  <symbol id="icon-video" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></symbol>
-  <symbol id="icon-message" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></symbol>
-  <symbol id="icon-lock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></symbol>
-  <symbol id="icon-calendar" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></symbol>
-  <symbol id="icon-success" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></symbol>
-  <symbol id="icon-arrow-right" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></symbol>
-  <symbol id="icon-plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></symbol>
-  <symbol id="icon-star" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></symbol>
-  <symbol id="icon-bulb" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="9" y1="18" x2="15" y2="18"/><line x1="10" y1="22" x2="14" y2="22"/><path d="M15.09 14c.18-.98.65-1.74 1.41-2.5A4.65 4.65 0 0 0 18 8 6 6 0 0 0 6 8c0 1 .23 2.23 1.5 3.5A4.61 4.61 0 0 1 8.91 14"/></symbol>
-</svg>
-
-<!-- ============================================================
-     NAV
-     ============================================================ -->
+<!-- NAV -->
 <nav>
   <a href="#" class="logo-wrap">
     <div class="logo-mark">
-      <img src="logo.png" alt="Devency Logo">
+      <!-- إذا وجد ملف logo.png في نفس المجلد يظهر تلقائياً، وإلا يظهر الـ SVG -->
+      <img src="logo.png" alt="Devency Logo" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+      <svg viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg" style="display:none">
+        <defs><linearGradient id="lg1" x1="0" y1="0" x2="44" y2="44" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#0d4f3c"/><stop offset="100%" stop-color="#1a8a64"/></linearGradient></defs>
+        <polygon points="22,2 37,7 42,22 37,37 22,42 7,37 2,22 7,7" fill="url(#lg1)"/>
+        <polygon points="22,9 26,17 35,17 28,22 31,31 22,26 13,31 16,22 9,17 18,17" fill="none" stroke="#c9a84c" stroke-width="1.2" opacity="0.9"/>
+        <circle cx="22" cy="22" r="3" fill="#c9a84c"/>
+        <path d="M18 11 Q22 8 26 11 Q22 9.5 18 11Z" fill="#e2c06e" opacity="0.7"/>
+      </svg>
     </div>
     <div class="logo-text-col">
       <div class="logo-name">Devency</div>
@@ -71,7 +447,7 @@
       <div class="logo-en-sub en">Islamic Growth Agency</div>
     </div>
   </a>
-  <div class="nav-right">
+  <div style="display:flex;align-items:center">
     <ul class="nav-links">
       <li><a href="#services"><span class="ar">الخدمات</span><span class="en">Services</span></a></li>
       <li><a href="#pricing"><span class="ar">الأسعار</span><span class="en">Pricing</span></a></li>
@@ -83,16 +459,11 @@
       <button class="lang-btn" id="btn-en">EN</button>
     </div>
     <div style="width:12px"></div>
-    <a href="#form" class="nav-cta">
-      <span class="ar">احجز استشارة مجانية</span>
-      <span class="en">Book Free Consult</span>
-    </a>
+    <a href="#form" class="nav-cta"><span class="ar">احجز استشارة مجانية</span><span class="en">Book Free Consult</span></a>
   </div>
 </nav>
 
-<!-- ============================================================
-     HERO
-     ============================================================ -->
+<!-- HERO -->
 <section class="hero">
   <div class="hero-geo"></div>
   <div class="hero-orb orb1"></div>
@@ -104,108 +475,81 @@
         <span class="ar">وكالة متخصصة في المؤسسات الإسلامية</span>
         <span class="en">Specialists in Islamic Institutions</span>
       </div>
-
       <h1 class="hero-h1">
         <span class="ar">هل تنفقون على التسويق… <em>دون تسجيلات أو عملاء حقيقيين؟</em></span>
         <span class="en">Spending on marketing… <em>with zero real registrations?</em></span>
       </h1>
-
       <p class="hero-p">
         <span class="ar">نحوّل مدارسكم الإسلامية ومشاريعكم القيمية إلى منظومات جذب ونمو حقيقي.</span>
         <span class="en">We turn Islamic schools and value-driven projects into real growth engines.</span>
       </p>
-
       <p class="hero-sub">
         <span class="ar">إعلانات مدروسة، محتوى احترافي، Funnels ذكية — مع التزام كامل بقيمكم الإسلامية.</span>
         <span class="en">Strategic ads, professional content, smart funnels — fully aligned with your Islamic values.</span>
       </p>
-
       <div class="hero-ctas">
         <a href="#form" class="btn-primary">
-          <svg width="16" height="16"><use href="#icon-calendar"/></svg>
-          <span class="ar">احجز استشارتك المجانية — 30 دقيقة</span>
-          <span class="en">Book Your Free Session — 30 min</span>
+          <span class="ar">📅 احجز استشارتك المجانية (30 دقيقة)</span>
+          <span class="en">📅 Book Your Free Session (30 min)</span>
         </a>
         <a href="#services" class="btn-secondary">
-          <span class="ar">اكتشف خدماتنا</span>
-          <span class="en">Explore Services</span>
+          <span class="ar">اكتشف خدماتنا ↓</span>
+          <span class="en">Explore Services ↓</span>
         </a>
       </div>
-
       <div class="hero-urgency">
-        <svg class="hero-urgency-icon" style="color:var(--gold-light)"><use href="#icon-lightning"/></svg>
+        <span style="font-size:17px">⚡</span>
         <p>
           <span class="ar">نقبل <strong>5 شركاء مؤسسين فقط</strong> هذا الشهر — <strong>تبقّى 4 مقاعد</strong></span>
           <span class="en">We accept <strong>5 founding partners only</strong> this month — <strong>4 seats remain</strong></span>
         </p>
       </div>
-
       <div class="trust-badges">
-        <div class="trust-b">
-          <svg width="14" height="14" style="color:var(--gold-light)"><use href="#icon-shield"/></svg>
-          <span class="ar">شرعي 100%</span><span class="en">Sharia Compliant</span>
-        </div>
-        <div class="trust-b">
-          <svg width="14" height="14" style="color:var(--gold-light)"><use href="#icon-chart"/></svg>
-          <span class="ar">شفافية كاملة</span><span class="en">Full Transparency</span>
-        </div>
-        <div class="trust-b">
-          <svg width="14" height="14" style="color:var(--gold-light)"><use href="#icon-globe"/></svg>
-          <span class="ar">خبرة إقليمية</span><span class="en">Regional Expertise</span>
-        </div>
-        <div class="trust-b">
-          <svg width="14" height="14" style="color:var(--gold-light)"><use href="#icon-handshake"/></svg>
-          <span class="ar">شراكة حقيقية</span><span class="en">Real Partnership</span>
-        </div>
+        <div class="trust-b"><span>🛡️ <span class="ar">شرعي 100%</span><span class="en">Sharia Compliant</span></span></div>
+        <div class="trust-b"><span>📊 <span class="ar">شفافية كاملة</span><span class="en">Full Transparency</span></span></div>
+        <div class="trust-b"><span>🌍 <span class="ar">خبرة إقليمية</span><span class="en">Regional Expertise</span></span></div>
+        <div class="trust-b"><span>🤝 <span class="ar">شراكة حقيقية</span><span class="en">Real Partnership</span></span></div>
       </div>
     </div>
-
-    <!-- Float Card -->
     <div class="hero-float">
       <div class="float-title ar">لماذا نُختار؟</div>
       <div class="float-title en">Why Choose Us?</div>
       <div class="float-items">
         <div class="float-item">
-          <svg class="float-icon" style="color:var(--gold-light)"><use href="#icon-mosque"/></svg>
+          <div class="float-icon">🕌</div>
           <div class="float-text">
             <strong class="ar">فهم إسلامي حقيقي</strong><strong class="en">Genuine Islamic Understanding</strong>
             <span class="ar">نعرف قيمكم ونحترم هويتكم</span><span class="en">We know your values and identity</span>
           </div>
         </div>
         <div class="float-item">
-          <svg class="float-icon" style="color:var(--gold-light)"><use href="#icon-chart"/></svg>
+          <div class="float-icon">💰</div>
           <div class="float-text">
             <strong class="ar">أسعار تناسبكم</strong><strong class="en">Affordable Pricing</strong>
-            <span class="ar">نريد إثبات أنفسنا بنتائج حقيقية معكم</span><span class="en">Proving ourselves with you</span>
+            <span class="ar">نريد إثبات أنفسنا بنتائج حقيقية معكم</span><span class="en">New agency, proving ourselves with you</span>
           </div>
         </div>
         <div class="float-item">
-          <svg class="float-icon" style="color:var(--gold-light)"><use href="#icon-target"/></svg>
+          <div class="float-icon">📈</div>
           <div class="float-text">
             <strong class="ar">تركيز على النتائج</strong><strong class="en">Results-Focused</strong>
             <span class="ar">نتائج قابلة للقياس لا وعود فضفاضة</span><span class="en">Measurable outcomes, not empty promises</span>
           </div>
         </div>
         <div class="float-item">
-          <svg class="float-icon" style="color:var(--gold-light)"><use href="#icon-eye"/></svg>
+          <div class="float-icon">🔍</div>
           <div class="float-text">
             <strong class="ar">شفافية تامة</strong><strong class="en">Total Transparency</strong>
             <span class="ar">تقارير واضحة بلا مصطلحات مبهمة</span><span class="en">Clear reports, no confusing jargon</span>
           </div>
         </div>
       </div>
-      <div class="float-foot">
-        <svg width="14" height="14" style="color:#22c55e;display:inline-block;vertical-align:middle"><use href="#icon-check"/></svg>
-        <span class="ar">نعمل معكم كشركاء لا كمزودي خدمة</span>
-        <span class="en">We work as partners, not vendors</span>
-      </div>
+      <div class="float-foot">✅ <span class="ar">نعمل معكم كشركاء لا كمزودي خدمة</span><span class="en">We work as partners, not vendors</span></div>
     </div>
   </div>
 </section>
 
-<!-- ============================================================
-     LOSS FRAMING
-     ============================================================ -->
+<!-- LOSS FRAMING -->
 <div class="loss-section reveal">
   <div class="loss-inner">
     <div class="loss-left">
@@ -224,7 +568,7 @@
       </p>
       <div class="loss-stat-row">
         <div class="loss-stat">
-          <svg class="loss-stat-icon" style="color:#fca5a5"><use href="#icon-money-down"/></svg>
+          <div class="loss-stat-icon">💸</div>
           <div class="loss-stat-text">
             <strong class="ar">فقدان 3 تسجيلات شهريًا قد يكلف أكثر من $5,000 سنويًا</strong>
             <strong class="en">Losing just 3 registrations/month could cost over $5,000 annually</strong>
@@ -233,7 +577,7 @@
           </div>
         </div>
         <div class="loss-stat">
-          <svg class="loss-stat-icon" style="color:#fca5a5"><use href="#icon-chart-down"/></svg>
+          <div class="loss-stat-icon">📉</div>
           <div class="loss-stat-text">
             <strong class="ar">ميزانية إعلانية بلا استراتيجية = هدر يصل لـ 78%</strong>
             <strong class="en">Ad budget without strategy = up to 78% waste rate</strong>
@@ -242,7 +586,7 @@
           </div>
         </div>
         <div class="loss-stat">
-          <svg class="loss-stat-icon" style="color:#fca5a5"><use href="#icon-clock"/></svg>
+          <div class="loss-stat-icon">⏳</div>
           <div class="loss-stat-text">
             <strong class="ar">كل شهر تأخير = منافس يملأ تلك المقاعد الشاغرة</strong>
             <strong class="en">Every month of delay = a competitor filling those seats</strong>
@@ -252,14 +596,10 @@
         </div>
       </div>
     </div>
-
     <!-- Calculator -->
     <div class="loss-calc">
-      <div class="calc-title">
-        <svg width="18" height="18" style="color:var(--gold-light);vertical-align:middle;margin-left:6px"><use href="#icon-calculator"/></svg>
-        <span class="ar">احسب خسارتك الشهرية</span>
-        <span class="en">Calculate Your Monthly Loss</span>
-      </div>
+      <div class="calc-title ar">🧮 احسب خسارتك الشهرية</div>
+      <div class="calc-title en">🧮 Calculate Your Monthly Loss</div>
       <label class="calc-label ar">عدد التسجيلات الضائعة شهريًا (تقدير)</label>
       <label class="calc-label en">Estimated missed registrations/month</label>
       <div class="calc-input-wrap">
@@ -277,15 +617,13 @@
         <div class="calc-result-sub ar">هذا ما ستحمونه بالتسويق الصحيح</div>
         <div class="calc-result-sub en">This is what proper marketing protects</div>
       </div>
-      <a href="#form" class="calc-cta-small ar">احجز استشارتك المجانية الآن</a>
-      <a href="#form" class="calc-cta-small en">Book Your Free Consultation Now</a>
+      <a href="#form" class="calc-cta-small ar">احجز استشارتك المجانية الآن ←</a>
+      <a href="#form" class="calc-cta-small en">Book Your Free Consultation Now →</a>
     </div>
   </div>
 </div>
 
-<!-- ============================================================
-     ABOUT BAR
-     ============================================================ -->
+<!-- ABOUT -->
 <div class="about-bar reveal" id="about-us">
   <div class="about-inner">
     <h2 class="about-tagline">
@@ -297,29 +635,15 @@
       <span class="en">We're at the start of our journey — and that's exactly what makes us different. We offer competitive pricing because we want to build our reputation through real results alongside you.</span>
     </p>
     <div class="about-pills">
-      <span class="about-pill">
-        <svg class="about-pill-icon" style="color:var(--emerald)"><use href="#icon-mosque"/></svg>
-        <span class="ar">مدارس إسلامية</span><span class="en">Islamic Schools</span>
-      </span>
-      <span class="about-pill">
-        <svg class="about-pill-icon" style="color:var(--emerald)"><use href="#icon-star"/></svg>
-        <span class="ar">أكاديميات تعليمية</span><span class="en">Educational Academies</span>
-      </span>
-      <span class="about-pill">
-        <svg class="about-pill-icon" style="color:var(--emerald)"><use href="#icon-star"/></svg>
-        <span class="ar">مراكز القرآن</span><span class="en">Quran Centers</span>
-      </span>
-      <span class="about-pill">
-        <svg class="about-pill-icon" style="color:var(--emerald)"><use href="#icon-target"/></svg>
-        <span class="ar">مشاريع قيمية</span><span class="en">Value-Driven Projects</span>
-      </span>
+      <span class="about-pill">🕌 <span class="ar">مدارس إسلامية</span><span class="en">Islamic Schools</span></span>
+      <span class="about-pill">🎓 <span class="ar">أكاديميات تعليمية</span><span class="en">Educational Academies</span></span>
+      <span class="about-pill">📖 <span class="ar">مراكز القرآن</span><span class="en">Quran Centers</span></span>
+      <span class="about-pill">✨ <span class="ar">مشاريع قيمية</span><span class="en">Value-Driven Projects</span></span>
     </div>
   </div>
 </div>
 
-<!-- ============================================================
-     SERVICES
-     ============================================================ -->
+<!-- SERVICES -->
 <section class="svc-dark" id="services">
   <div style="max-width:1160px;margin:0 auto;text-align:center" class="reveal">
     <div class="section-tag" style="background:rgba(201,168,76,.09);border-color:rgba(201,168,76,.18)">
@@ -336,125 +660,117 @@
       <span class="en">Paid ads for fast results, or organic presence for long-term authority — or both together.</span>
     </p>
   </div>
-
   <div class="svc-tabs reveal">
     <div class="svc-tab-nav">
-      <button class="svc-tab-btn active" data-tab="paid" onclick="switchSvcTab('paid')">
-        <svg class="tab-icon" style="color:currentColor"><use href="#icon-megaphone"/></svg>
-        <span class="ar">إعلانات مدفوعة</span><span class="en">Paid Advertising</span>
+      <button class="svc-tab-btn active" id="svc-btn-paid" onclick="switchSvcTab('paid')">
+        <span class="ar">📈 إعلانات مدفوعة</span>
+        <span class="en">📈 Paid Advertising</span>
       </button>
-      <button class="svc-tab-btn" data-tab="organic" onclick="switchSvcTab('organic')">
-        <svg class="tab-icon" style="color:currentColor"><use href="#icon-pen"/></svg>
-        <span class="ar">تسويق عضوي</span><span class="en">Organic Marketing</span>
+      <button class="svc-tab-btn" id="svc-btn-organic" onclick="switchSvcTab('organic')">
+        <span class="ar">🏛️ تسويق عضوي</span>
+        <span class="en">🏛️ Organic Marketing</span>
       </button>
     </div>
-
-    <!-- Paid -->
     <div class="svc-panel active" id="svc-paid">
       <div class="svc-grid">
         <div class="svc-card">
-          <svg class="svc-icon" style="color:var(--gold-light)"><use href="#icon-target"/></svg>
+          <span class="svc-icon">🎯</span>
           <div class="svc-title ar">استهداف الجمهور</div>
           <div class="svc-title en">Audience Targeting</div>
           <div class="svc-desc ar">نحدد جمهوركم المثالي بدقة لضمان وصول كل ريال إعلاني للشخص الصحيح</div>
-          <div class="svc-desc en">We pinpoint your ideal audience to ensure every ad dollar reaches the right person</div>
+          <div class="svc-desc en">We pinpoint your ideal audience with precision to ensure every ad dollar reaches the right person</div>
           <ul class="svc-list">
-            <li><svg class="svc-list-check"><use href="#icon-check"/></svg><span class="ar">بحث جمهور متعمق</span><span class="en">Deep audience research</span></li>
-            <li><svg class="svc-list-check"><use href="#icon-check"/></svg>Lookalike Audiences</li>
-            <li><svg class="svc-list-check"><use href="#icon-check"/></svg>Interest &amp; Behavior Targeting</li>
-            <li><svg class="svc-list-check"><use href="#icon-check"/></svg><span class="ar">Custom Audiences من قاعدتكم</span><span class="en">Custom Audiences from your base</span></li>
+            <li class="ar">بحث جمهور متعمق</li><li class="en">Deep audience research</li>
+            <li>Lookalike Audiences</li>
+            <li>Interest & Behavior Targeting</li>
+            <li class="ar">Custom Audiences من قاعدتكم</li><li class="en">Custom Audiences from your base</li>
           </ul>
         </div>
         <div class="svc-card">
-          <svg class="svc-icon" style="color:var(--gold-light)"><use href="#icon-megaphone"/></svg>
+          <span class="svc-icon">📱</span>
           <div class="svc-title ar">إدارة الإعلانات</div>
           <div class="svc-title en">Ad Management</div>
           <div class="svc-desc ar">إعلانات مدفوعة على جميع المنصات الرئيسية مُحسَّنة لتحقيق أفضل عائد</div>
           <div class="svc-desc en">Paid ads across all major platforms, optimized for the best ROI</div>
           <ul class="svc-list">
-            <li><svg class="svc-list-check"><use href="#icon-check"/></svg>Meta &amp; Instagram Ads</li>
-            <li><svg class="svc-list-check"><use href="#icon-check"/></svg>Google Search &amp; Display</li>
-            <li><svg class="svc-list-check"><use href="#icon-check"/></svg>TikTok &amp; Snapchat</li>
-            <li><svg class="svc-list-check"><use href="#icon-check"/></svg><span class="ar">Retargeting متقدم</span><span class="en">Advanced Retargeting</span></li>
+            <li>Meta & Instagram Ads</li>
+            <li>Google Search & Display</li>
+            <li>TikTok & Snapchat</li>
+            <li class="ar">Retargeting متقدم</li><li class="en">Advanced Retargeting</li>
           </ul>
         </div>
         <div class="svc-card">
-          <svg class="svc-icon" style="color:var(--gold-light)"><use href="#icon-settings"/></svg>
+          <span class="svc-icon">🔬</span>
           <div class="svc-title ar">التحسين المستمر</div>
           <div class="svc-title en">Continuous Optimization</div>
           <div class="svc-desc ar">تحليل دوري وتعديل مستمر لرفع الأداء وخفض تكلفة الاكتساب</div>
-          <div class="svc-desc en">Regular analysis and continuous refinement to boost performance</div>
+          <div class="svc-desc en">Regular analysis and continuous refinement to boost performance and reduce cost per acquisition</div>
           <ul class="svc-list">
-            <li><svg class="svc-list-check"><use href="#icon-check"/></svg>A/B Testing</li>
-            <li><svg class="svc-list-check"><use href="#icon-check"/></svg><span class="ar">تقارير أسبوعية واضحة</span><span class="en">Clear weekly reports</span></li>
-            <li><svg class="svc-list-check"><use href="#icon-check"/></svg><span class="ar">تتبع الـ Leads والتحويلات</span><span class="en">Lead &amp; conversion tracking</span></li>
-            <li><svg class="svc-list-check"><use href="#icon-check"/></svg><span class="ar">تحليل منافسين دوري</span><span class="en">Periodic competitor analysis</span></li>
+            <li>A/B Testing</li>
+            <li class="ar">تقارير أسبوعية واضحة</li><li class="en">Clear weekly reports</li>
+            <li class="ar">تتبع الـ Leads والتحويلات</li><li class="en">Lead & conversion tracking</li>
+            <li class="ar">تحليل منافسين دوري</li><li class="en">Periodic competitor analysis</li>
           </ul>
         </div>
       </div>
     </div>
-
-    <!-- Organic -->
     <div class="svc-panel" id="svc-organic">
       <div class="svc-grid">
         <div class="svc-card">
-          <svg class="svc-icon" style="color:var(--gold-light)"><use href="#icon-pen"/></svg>
+          <span class="svc-icon">✍️</span>
           <div class="svc-title ar">إنتاج المحتوى</div>
           <div class="svc-title en">Content Production</div>
           <div class="svc-desc ar">محتوى إسلامي احترافي يبني الثقة ويجذب جمهوركم المثالي بشكل طبيعي</div>
-          <div class="svc-desc en">Professional Islamic content that builds trust and attracts your ideal audience</div>
+          <div class="svc-desc en">Professional Islamic content that builds trust and naturally attracts your ideal audience</div>
           <ul class="svc-list">
-            <li><svg class="svc-list-check"><use href="#icon-check"/></svg><span class="ar">استراتيجية محتوى شهرية</span><span class="en">Monthly content strategy</span></li>
-            <li><svg class="svc-list-check"><use href="#icon-check"/></svg><span class="ar">كتابة إبداعية بالعربية</span><span class="en">Creative Arabic copywriting</span></li>
-            <li><svg class="svc-list-check"><use href="#icon-check"/></svg><span class="ar">قصص وReels وPosts</span><span class="en">Stories, Reels &amp; Posts</span></li>
-            <li><svg class="svc-list-check"><use href="#icon-check"/></svg><span class="ar">تقويم نشر منظم</span><span class="en">Organized publishing calendar</span></li>
+            <li class="ar">استراتيجية محتوى شهرية</li><li class="en">Monthly content strategy</li>
+            <li class="ar">كتابة إبداعية بالعربية</li><li class="en">Creative Arabic copywriting</li>
+            <li class="ar">قصص وReels وPosts</li><li class="en">Stories, Reels & Posts</li>
+            <li class="ar">تقويم نشر منظم</li><li class="en">Organized publishing calendar</li>
           </ul>
         </div>
         <div class="svc-card">
-          <svg class="svc-icon" style="color:var(--gold-light)"><use href="#icon-search"/></svg>
+          <span class="svc-icon">🔎</span>
           <div class="svc-title ar">SEO بالعربية</div>
           <div class="svc-title en">Arabic SEO</div>
           <div class="svc-desc ar">تحسين ظهوركم في محركات البحث لاستقطاب جمهور يبحث عن خدماتكم</div>
-          <div class="svc-desc en">Improving your search engine visibility to attract audiences</div>
+          <div class="svc-desc en">Improving your search engine visibility to attract audiences actively looking for your services</div>
           <ul class="svc-list">
-            <li><svg class="svc-list-check"><use href="#icon-check"/></svg><span class="ar">بحث كلمات مفتاحية إسلامية</span><span class="en">Islamic keyword research</span></li>
-            <li><svg class="svc-list-check"><use href="#icon-check"/></svg>On-Page &amp; Technical SEO</li>
-            <li><svg class="svc-list-check"><use href="#icon-check"/></svg><span class="ar">بناء روابط موثوقة</span><span class="en">Authority link building</span></li>
-            <li><svg class="svc-list-check"><use href="#icon-check"/></svg><span class="ar">تقارير ترتيب شهرية</span><span class="en">Monthly ranking reports</span></li>
+            <li class="ar">بحث كلمات مفتاحية إسلامية</li><li class="en">Islamic keyword research</li>
+            <li>On-Page & Technical SEO</li>
+            <li class="ar">بناء روابط موثوقة</li><li class="en">Authority link building</li>
+            <li class="ar">تقارير ترتيب شهرية</li><li class="en">Monthly ranking reports</li>
           </ul>
         </div>
         <div class="svc-card">
-          <svg class="svc-icon" style="color:var(--gold-light)"><use href="#icon-email"/></svg>
-          <div class="svc-title">Email &amp; Community</div>
+          <span class="svc-icon">📧</span>
+          <div class="svc-title ar">Email & Community</div>
+          <div class="svc-title en">Email & Community</div>
           <div class="svc-desc ar">بناء مجتمع وفيّ حول مؤسستكم عبر قنوات مباشرة وفعّالة</div>
-          <div class="svc-desc en">Building a loyal community through direct, effective channels</div>
+          <div class="svc-desc en">Building a loyal community around your institution through direct, effective channels</div>
           <ul class="svc-list">
-            <li><svg class="svc-list-check"><use href="#icon-check"/></svg>Email Marketing</li>
-            <li><svg class="svc-list-check"><use href="#icon-check"/></svg>Newsletter Strategy</li>
-            <li><svg class="svc-list-check"><use href="#icon-check"/></svg>Social Media Management</li>
-            <li><svg class="svc-list-check"><use href="#icon-check"/></svg>Thought Leadership</li>
+            <li>Email Marketing</li>
+            <li>Newsletter Strategy</li>
+            <li>Social Media Management</li>
+            <li>Thought Leadership</li>
           </ul>
         </div>
       </div>
     </div>
-
     <div class="svc-cta-row">
       <a href="#pricing">
-        <svg width="16" height="16"><use href="#icon-arrow-right"/></svg>
-        <span class="ar">اكتشف الباقات والأسعار</span>
-        <span class="en">Explore Packages &amp; Pricing</span>
+        <span class="ar">📦 اكتشف الباقات والأسعار ↓</span>
+        <span class="en">📦 Explore Packages & Pricing ↓</span>
       </a>
     </div>
   </div>
 </section>
 
-<!-- ============================================================
-     PRICING
-     ============================================================ -->
+<!-- PRICING -->
 <section class="pricing-section" id="pricing">
   <div style="max-width:1200px;margin:0 auto;text-align:center" class="reveal">
-    <div class="section-tag"><div class="section-tag-dot"></div><span class="ar">الأسعار والباقات</span><span class="en">Pricing &amp; Packages</span></div>
-    <h2 class="section-title"><span class="ar">أسعار <em>شفافة</em> وواضحة</span><span class="en"><em>Transparent</em> &amp; Clear Pricing</span></h2>
+    <div class="section-tag"><div class="section-tag-dot"></div><span class="ar">الأسعار والباقات</span><span class="en">Pricing & Packages</span></div>
+    <h2 class="section-title"><span class="ar">أسعار <em>شفافة</em> وواضحة</span><span class="en"><em>Transparent</em> & Clear Pricing</span></h2>
     <p class="section-sub" style="max-width:620px;margin:0 auto">
       <span class="ar">نؤمن أن الثقة تُبنى بنتائج حقيقية — لهذا نُقدّم قيمة استثنائية مع التزام كامل بالشفافية</span>
       <span class="en">We believe trust is built through real results — that's why we offer exceptional value with full transparency</span>
@@ -463,20 +779,20 @@
 
   <div class="pricing-tabs reveal">
     <div class="pricing-tab-nav">
-      <button class="pricing-tab-btn active" data-tab="paid" onclick="switchPricingTab('paid')">
-        <svg class="tab-icon"><use href="#icon-megaphone"/></svg>
-        <span class="ar">باقات الإعلانات المدفوعة</span><span class="en">Paid Ads Packages</span>
+      <button class="pricing-tab-btn active" onclick="switchPricingTab('paid')">
+        <span class="ar">📈 باقات الإعلانات المدفوعة</span>
+        <span class="en">📈 Paid Ads Packages</span>
       </button>
-      <button class="pricing-tab-btn" data-tab="organic" onclick="switchPricingTab('organic')">
-        <svg class="tab-icon"><use href="#icon-pen"/></svg>
-        <span class="ar">باقات التسويق العضوي</span><span class="en">Organic Marketing Packages</span>
+      <button class="pricing-tab-btn" onclick="switchPricingTab('organic')">
+        <span class="ar">🏛️ باقات التسويق العضوي</span>
+        <span class="en">🏛️ Organic Marketing Packages</span>
       </button>
     </div>
 
     <!-- PAID PACKAGES -->
     <div class="pricing-panel active" id="pkg-paid">
       <p class="pkg-intro ar">باقات الإعلانات المدفوعة تشمل إدارة الحملات والاستراتيجية والإبداع. ميزانية الإعلانات على Meta وGoogle تُدار عبر حسابكم وتُضاف فوق رسومنا.</p>
-      <p class="pkg-intro en">Paid Ads packages include campaign management, strategy &amp; creative. Ad spend on Meta &amp; Google is managed through your account and is separate from our fees.</p>
+      <p class="pkg-intro en">Paid Ads packages include campaign management, strategy & creative. Ad spend on Meta & Google is managed through your account and is separate from our fees.</p>
       <div class="pkg-grid pkg-grid-4" style="max-width:1160px;margin:0 auto">
 
         <div class="pkg-card reveal">
@@ -489,17 +805,17 @@
           <div class="pkg-tagline en">For launching and first real results</div>
           <div class="pkg-divider"></div>
           <ul class="pkg-features-summary">
-            <li><svg class="pkg-check"><use href="#icon-check"/></svg><span class="ar">مكالمة استراتيجية أولى</span><span class="en">Strategic kickoff call</span></li>
-            <li><svg class="pkg-check"><use href="#icon-check"/></svg><span class="ar">بحث جمهور متخصص</span><span class="en">Audience research</span></li>
-            <li><svg class="pkg-check"><use href="#icon-check"/></svg><span class="ar">10 إعلانات/شهر</span><span class="en">10 ads/month</span></li>
-            <li><svg class="pkg-check"><use href="#icon-check"/></svg><span class="ar">منصة واحدة</span><span class="en">Single platform</span></li>
-            <li><svg class="pkg-check"><use href="#icon-check"/></svg><span class="ar">تحسين أسبوعي</span><span class="en">Weekly optimization</span></li>
+            <li><span class="ar">مكالمة استراتيجية أولى</span><span class="en">Strategic kickoff call</span></li>
+            <li><span class="ar">بحث جمهور متخصص</span><span class="en">Audience research</span></li>
+            <li><span class="ar">10 إعلانات/شهر</span><span class="en">10 ads/month</span></li>
+            <li><span class="ar">منصة واحدة</span><span class="en">Single platform</span></li>
+            <li><span class="ar">تحسين أسبوعي</span><span class="en">Weekly optimization</span></li>
           </ul>
           <button class="pkg-more-btn" onclick="toggleMore(this)"><span class="ar">+ مزيد</span><span class="en">+ More</span></button>
           <div class="pkg-extra"><ul>
-            <li><div class="pkg-extra-dot"></div><span class="ar">تتبع الـ Leads</span><span class="en">Lead tracking</span></li>
-            <li><div class="pkg-extra-dot"></div><span class="ar">تقرير شهري</span><span class="en">Monthly reporting</span></li>
-            <li><div class="pkg-extra-dot"></div><span class="ar">دعم WhatsApp</span><span class="en">WhatsApp support</span></li>
+            <li><span class="ar">تتبع الـ Leads</span><span class="en">Lead tracking</span></li>
+            <li><span class="ar">تقرير شهري</span><span class="en">Monthly reporting</span></li>
+            <li><span class="ar">دعم WhatsApp</span><span class="en">WhatsApp support</span></li>
           </ul></div>
           <button class="pkg-cta cta-outline" onclick="selectPackage('launch')"><span class="ar">ابدأ الآن</span><span class="en">Get Started</span></button>
         </div>
@@ -514,18 +830,18 @@
           <div class="pkg-tagline en">Everything in Launch + advanced capabilities</div>
           <div class="pkg-divider"></div>
           <ul class="pkg-features-summary">
-            <li><svg class="pkg-check"><use href="#icon-check"/></svg><span class="ar">كل ما في Launch +</span><span class="en">Everything in Launch +</span></li>
-            <li><svg class="pkg-check"><use href="#icon-check"/></svg><span class="ar">25 إعلانًا/شهر</span><span class="en">25 ads/month</span></li>
-            <li><svg class="pkg-check"><use href="#icon-check"/></svg>Meta + Google</li>
-            <li><svg class="pkg-check"><use href="#icon-check"/></svg>Advanced Retargeting</li>
-            <li><svg class="pkg-check"><use href="#icon-check"/></svg><span class="ar">تقارير أسبوعية</span><span class="en">Weekly reporting</span></li>
-            <li><svg class="pkg-check"><use href="#icon-check"/></svg>Funnel Optimization</li>
+            <li><span class="ar">كل ما في Launch +</span><span class="en">Everything in Launch +</span></li>
+            <li><span class="ar">25 إعلانًا/شهر</span><span class="en">25 ads/month</span></li>
+            <li>Meta + Google</li>
+            <li>Advanced Retargeting</li>
+            <li><span class="ar">تقارير أسبوعية</span><span class="en">Weekly reporting</span></li>
+            <li>Funnel Optimization</li>
           </ul>
           <button class="pkg-more-btn" onclick="toggleMore(this)"><span class="ar">+ مزيد</span><span class="en">+ More</span></button>
           <div class="pkg-extra"><ul>
-            <li><div class="pkg-extra-dot"></div>A/B Testing</li>
-            <li><div class="pkg-extra-dot"></div><span class="ar">تكامل WhatsApp</span><span class="en">WhatsApp integration</span></li>
-            <li><div class="pkg-extra-dot"></div><span class="ar">تحليل منافسين شهري</span><span class="en">Monthly competitor analysis</span></li>
+            <li>A/B Testing</li>
+            <li><span class="ar">تكامل WhatsApp</span><span class="en">WhatsApp integration</span></li>
+            <li><span class="ar">تحليل منافسين شهري</span><span class="en">Monthly competitor analysis</span></li>
           </ul></div>
           <button class="pkg-cta cta-solid" onclick="selectPackage('growth')"><span class="ar">أريد النمو</span><span class="en">I Want Growth</span></button>
         </div>
@@ -540,18 +856,18 @@
           <div class="pkg-tagline en">Full ad system to establish your dominance</div>
           <div class="pkg-divider"></div>
           <ul class="pkg-features-summary">
-            <li><svg class="pkg-check"><use href="#icon-check"/></svg>Full Funnel Strategy</li>
-            <li><svg class="pkg-check"><use href="#icon-check"/></svg>Multi-platform Campaigns</li>
-            <li><svg class="pkg-check"><use href="#icon-check"/></svg>Creative Production</li>
-            <li><svg class="pkg-check"><use href="#icon-check"/></svg>CRO Optimization</li>
-            <li><svg class="pkg-check"><use href="#icon-check"/></svg><span class="ar">دعم أولوية</span><span class="en">Priority Support</span></li>
+            <li>Full Funnel Strategy</li>
+            <li>Multi-platform Campaigns</li>
+            <li>Creative Production</li>
+            <li>CRO Optimization</li>
+            <li><span class="ar">دعم أولوية</span><span class="en">Priority Support</span></li>
           </ul>
           <button class="pkg-more-btn" onclick="toggleMore(this)"><span class="ar">+ مزيد</span><span class="en">+ More</span></button>
           <div class="pkg-extra"><ul>
-            <li><div class="pkg-extra-dot"></div><span class="ar">فريق دعم مخصص</span><span class="en">Dedicated support team</span></li>
-            <li><div class="pkg-extra-dot"></div>Quarterly Growth Roadmap</li>
-            <li><div class="pkg-extra-dot"></div><span class="ar">3+ منصات إعلانية</span><span class="en">3+ ad platforms</span></li>
-            <li><div class="pkg-extra-dot"></div><span class="ar">اجتماع استراتيجي شهري</span><span class="en">Monthly strategy meeting</span></li>
+            <li><span class="ar">فريق دعم مخصص</span><span class="en">Dedicated support team</span></li>
+            <li>Quarterly Growth Roadmap</li>
+            <li><span class="ar">3+ منصات إعلانية</span><span class="en">3+ ad platforms</span></li>
+            <li><span class="ar">اجتماع استراتيجي شهري</span><span class="en">Monthly strategy meeting</span></li>
           </ul></div>
           <button class="pkg-cta cta-outline" onclick="selectPackage('authority')"><span class="ar">ابنِ الهيمنة</span><span class="en">Build Authority</span></button>
         </div>
@@ -566,21 +882,23 @@
           <div class="pkg-tagline w en">Full strategic partnership with highest ROI</div>
           <div class="pkg-divider w"></div>
           <ul class="pkg-features-summary">
-            <li class="g"><svg class="pkg-check g"><use href="#icon-check"/></svg><span class="ar">كل شيء مشمول</span><span class="en">Everything included</span></li>
-            <li class="g"><svg class="pkg-check g"><use href="#icon-check"/></svg><span class="ar">اجتماعات أسبوعية</span><span class="en">Weekly strategy meetings</span></li>
-            <li class="g"><svg class="pkg-check g"><use href="#icon-check"/></svg><span class="ar">Landing Pages مخصصة</span><span class="en">Custom Landing Pages</span></li>
-            <li class="g"><svg class="pkg-check g"><use href="#icon-check"/></svg><span class="ar">تكامل CRM كامل</span><span class="en">Full CRM integration</span></li>
-            <li class="g"><svg class="pkg-check g"><use href="#icon-check"/></svg><span class="ar">أنظمة Automation</span><span class="en">Automation systems</span></li>
-            <li class="g"><svg class="pkg-check g"><use href="#icon-check"/></svg>Quarterly Growth Roadmap</li>
+            <li class="g"><span class="ar">كل شيء مشمول</span><span class="en">Everything included</span></li>
+            <li class="g"><span class="ar">اجتماعات استراتيجية أسبوعية</span><span class="en">Weekly strategy meetings</span></li>
+            <li class="g"><span class="ar">Landing Pages مخصصة</span><span class="en">Custom Landing Pages</span></li>
+            <li class="g"><span class="ar">تكامل CRM كامل</span><span class="en">Full CRM integration</span></li>
+            <li class="g"><span class="ar">أنظمة Automation</span><span class="en">Automation systems</span></li>
+            <li class="g"><span class="ar">تحليل ذكاء المنافسين</span><span class="en">Competitor intelligence</span></li>
+            <li class="g">Quarterly Growth Roadmap</li>
           </ul>
           <button class="pkg-cta cta-gold" onclick="selectPackage('elite')">
-            <span class="ar">أريد شراكة Elite</span><span class="en">I Want Elite Partnership</span>
+            <span class="ar">🤝 أريد شراكة Elite</span>
+            <span class="en">🤝 I Want Elite Partnership</span>
           </button>
         </div>
       </div>
       <p class="anchor-note reveal">
-        <span class="ar">باقة Elite Partnership تمنحك أوضح صورة عن القيمة الحقيقية — الباقات الأخرى تصبح قرارًا أسهل بالمقارنة.</span>
-        <span class="en">Elite Partnership gives you the clearest picture of true value — other packages become an easier decision by comparison.</span>
+        <span class="ar">💡 باقة Elite Partnership تمنحك أوضح صورة عن القيمة الحقيقية — الباقات الأخرى تصبح قرارًا أسهل بالمقارنة.</span>
+        <span class="en">💡 Elite Partnership gives you the clearest picture of true value — other packages become an easier decision by comparison.</span>
       </p>
     </div>
 
@@ -599,16 +917,16 @@
           <div class="pkg-tagline en">Professional Islamic content that builds audience trust</div>
           <div class="pkg-divider"></div>
           <ul class="pkg-features-summary">
-            <li><svg class="pkg-check"><use href="#icon-check"/></svg><span class="ar">12 منشور/شهر</span><span class="en">12 posts/month</span></li>
-            <li><svg class="pkg-check"><use href="#icon-check"/></svg><span class="ar">كتابة احترافية بالعربية</span><span class="en">Professional Arabic copywriting</span></li>
-            <li><svg class="pkg-check"><use href="#icon-check"/></svg><span class="ar">تقويم نشر منظم</span><span class="en">Organized publishing calendar</span></li>
-            <li><svg class="pkg-check"><use href="#icon-check"/></svg><span class="ar">تقرير أداء شهري</span><span class="en">Monthly performance report</span></li>
+            <li><span class="ar">12 منشور/شهر</span><span class="en">12 posts/month</span></li>
+            <li><span class="ar">كتابة احترافية بالعربية</span><span class="en">Professional Arabic copywriting</span></li>
+            <li><span class="ar">تقويم نشر منظم</span><span class="en">Organized publishing calendar</span></li>
+            <li><span class="ar">تقرير أداء شهري</span><span class="en">Monthly performance report</span></li>
           </ul>
           <button class="pkg-more-btn" onclick="toggleMore(this)"><span class="ar">+ مزيد</span><span class="en">+ More</span></button>
           <div class="pkg-extra"><ul>
-            <li><div class="pkg-extra-dot"></div><span class="ar">استراتيجية محتوى مخصصة</span><span class="en">Custom content strategy</span></li>
-            <li><div class="pkg-extra-dot"></div>Hashtag Research</li>
-            <li><div class="pkg-extra-dot"></div><span class="ar">إدارة التعليقات</span><span class="en">Comment management</span></li>
+            <li><span class="ar">استراتيجية محتوى مخصصة</span><span class="en">Custom content strategy</span></li>
+            <li>Hashtag Research</li>
+            <li><span class="ar">إدارة التعليقات</span><span class="en">Comment management</span></li>
           </ul></div>
           <button class="pkg-cta cta-outline" onclick="selectPackage('organic-presence')"><span class="ar">ابدأ الآن</span><span class="en">Get Started</span></button>
         </div>
@@ -626,20 +944,21 @@
           <div class="pkg-tagline w en">Content + SEO + Email = Total organic authority</div>
           <div class="pkg-divider w"></div>
           <ul class="pkg-features-summary">
-            <li class="w"><svg class="pkg-check w"><use href="#icon-check"/></svg><span class="ar">كل ما في Organic Presence +</span><span class="en">Everything in Organic Presence +</span></li>
-            <li class="w"><svg class="pkg-check w"><use href="#icon-check"/></svg><span class="ar">SEO عربي متكامل</span><span class="en">Full Arabic SEO</span></li>
-            <li class="w"><svg class="pkg-check w"><use href="#icon-check"/></svg>Email Marketing</li>
-            <li class="w"><svg class="pkg-check w"><use href="#icon-check"/></svg><span class="ar">Newsletter شهرية</span><span class="en">Monthly Newsletter</span></li>
-            <li class="w"><svg class="pkg-check w"><use href="#icon-check"/></svg><span class="ar">20 منشور/شهر</span><span class="en">20 posts/month</span></li>
+            <li class="w"><span class="ar">كل ما في Organic Presence +</span><span class="en">Everything in Organic Presence +</span></li>
+            <li class="w"><span class="ar">SEO عربي متكامل</span><span class="en">Full Arabic SEO</span></li>
+            <li class="w">Email Marketing</li>
+            <li class="w"><span class="ar">Newsletter شهرية</span><span class="en">Monthly Newsletter</span></li>
+            <li class="w"><span class="ar">20 منشور/شهر</span><span class="en">20 posts/month</span></li>
           </ul>
           <button class="pkg-more-btn w" onclick="toggleMore(this)"><span class="ar">+ مزيد</span><span class="en">+ More</span></button>
           <div class="pkg-extra"><ul>
-            <li class="w"><div class="pkg-extra-dot"></div>Thought Leadership Content</li>
-            <li class="w"><div class="pkg-extra-dot"></div><span class="ar">بناء روابط موثوقة</span><span class="en">Authority link building</span></li>
-            <li class="w"><div class="pkg-extra-dot"></div><span class="ar">اجتماع استراتيجي شهري</span><span class="en">Monthly strategy meeting</span></li>
+            <li class="w">Thought Leadership Content</li>
+            <li class="w"><span class="ar">بناء روابط موثوقة</span><span class="en">Authority link building</span></li>
+            <li class="w"><span class="ar">اجتماع استراتيجي شهري</span><span class="en">Monthly strategy meeting</span></li>
           </ul></div>
           <button class="pkg-cta cta-gold" onclick="selectPackage('organic-growth')">
-            <span class="ar">أريد الهيمنة العضوية</span><span class="en">I Want Full Organic</span>
+            <span class="ar">أريد الهيمنة العضوية</span>
+            <span class="en">I Want Full Organic</span>
           </button>
         </div>
       </div>
@@ -647,9 +966,7 @@
   </div>
 </section>
 
-<!-- ============================================================
-     ADD-ONS
-     ============================================================ -->
+<!-- ADD-ONS -->
 <section class="addons-bg" id="addons">
   <div style="max-width:1000px;margin:0 auto;text-align:center" class="reveal">
     <div class="section-tag"><div class="section-tag-dot"></div><span class="ar">خدمات إضافية</span><span class="en">Add-on Services</span></div>
@@ -659,48 +976,48 @@
     </h2>
   </div>
   <div class="addon-note reveal">
-    <span class="ar">هذه الخدمات متاحة <strong>باستقلالية تامة</strong> — لا تحتاج لاشتراك في أي باقة.</span>
-    <span class="en">These services are available <strong>completely independently</strong> — no package subscription required.</span>
+    <span class="ar">هذه الخدمات متاحة <strong>باستقلالية تامة</strong> — لا تحتاج لاشتراك في أي باقة. يمكنكم الاستفادة منها بشكل منفصل أو إضافتها لتضاعف أداء باقتكم الرئيسية.</span>
+    <span class="en">These services are available <strong>completely independently</strong> — no package subscription required. Use them standalone or add them to supercharge your main package.</span>
   </div>
   <div class="addons-grid reveal">
     <div class="addon-card">
-      <svg class="addon-icon" style="color:var(--emerald)"><use href="#icon-rocket"/></svg>
+      <div class="addon-icon">🚀</div>
       <div class="addon-title">Premium Landing Page</div>
-      <div class="addon-price">Starting from $450</div>
-      <div class="addon-desc ar">صفحة هبوط مصممة بمعايير احترافية تحوّل الزوار لعملاء حقيقيين.</div>
-      <div class="addon-desc en">Professionally designed landing page that converts visitors into real customers.</div>
+      <div class="addon-price ar">Starting from $450</div><div class="addon-price en">Starting from $450</div>
+      <div class="addon-desc ar">صفحة هبوط مصممة بمعايير احترافية تحوّل الزوار لعملاء حقيقيين. تصميم وكتابة وتطوير كامل.</div>
+      <div class="addon-desc en">Professionally designed landing page that converts visitors into real customers. Full design, copy & development.</div>
       <button class="addon-cta" onclick="selectPackage('landing')"><span class="ar">أريدها</span><span class="en">I Want This</span></button>
     </div>
     <div class="addon-card">
-      <svg class="addon-icon" style="color:var(--emerald)"><use href="#icon-website"/></svg>
+      <div class="addon-icon">🌐</div>
       <div class="addon-title">Full Website</div>
-      <div class="addon-price">Starting from $950</div>
-      <div class="addon-desc ar">موقع مؤسسي احترافي يعكس قيمكم ويبني الثقة مع زوّاركم.</div>
-      <div class="addon-desc en">Professional institutional website reflecting your values.</div>
+      <div class="addon-price ar">Starting from $950</div><div class="addon-price en">Starting from $950</div>
+      <div class="addon-desc ar">موقع مؤسسي احترافي يعكس قيمكم ويبني الثقة مع زوّاركم. تصميم حديث وسرعة عالية.</div>
+      <div class="addon-desc en">Professional institutional website reflecting your values. Modern design, high performance.</div>
       <button class="addon-cta" onclick="selectPackage('website')"><span class="ar">أريده</span><span class="en">I Want This</span></button>
     </div>
     <div class="addon-card">
-      <svg class="addon-icon" style="color:var(--emerald)"><use href="#icon-video"/></svg>
+      <div class="addon-icon">🎬</div>
       <div class="addon-title">Video Sales Creative</div>
-      <div class="addon-price">Starting from $150</div>
-      <div class="addon-desc ar">فيديو قصير ومقنع يرفع أداء إعلاناتك ويحسّن نسبة التحويل.</div>
-      <div class="addon-desc en">Short, persuasive video designed to boost ad performance.</div>
+      <div class="addon-price ar">Starting from $150</div><div class="addon-price en">Starting from $150</div>
+      <div class="addon-desc ar">فيديو قصير ومقنع يرفع أداء إعلاناتك ويحسّن نسبة التحويل بشكل ملحوظ.</div>
+      <div class="addon-desc en">Short, persuasive video designed to boost ad performance and improve conversion rates significantly.</div>
       <button class="addon-cta" onclick="selectPackage('video')"><span class="ar">أريده</span><span class="en">I Want This</span></button>
     </div>
     <div class="addon-card">
-      <svg class="addon-icon" style="color:var(--emerald)"><use href="#icon-message"/></svg>
+      <div class="addon-icon">💬</div>
       <div class="addon-title">WhatsApp Automation + CRM</div>
-      <div class="addon-price">Starting from $250/month</div>
-      <div class="addon-desc ar">نظام أتمتة رسائل WhatsApp مع تكامل CRM يحوّل الاستفسارات لمبيعات تلقائيًا.</div>
-      <div class="addon-desc en">WhatsApp automation with CRM integration that converts inquiries into sales automatically.</div>
+      <div class="addon-price ar">Starting from $250/month</div><div class="addon-price en">Starting from $250/month</div>
+      <div class="addon-desc ar">نظام أتمتة رسائل WhatsApp مع تكامل CRM يحوّل الاستفسارات لمواعيد ومبيعات تلقائيًا.</div>
+      <div class="addon-desc en">WhatsApp automation with CRM integration that converts inquiries into appointments and sales automatically.</div>
       <button class="addon-cta" onclick="selectPackage('whatsapp')"><span class="ar">أريده</span><span class="en">I Want This</span></button>
     </div>
   </div>
 
-  <!-- Bundle -->
+  <!-- BUNDLE -->
   <div class="bundle-card reveal">
-    <div class="bundle-badge ar">عرض محدود — Founding Partner</div>
-    <div class="bundle-badge en">Limited Offer — Founding Partner</div>
+    <div class="bundle-badge ar">⚡ عرض محدود — Founding Partner</div>
+    <div class="bundle-badge en">⚡ Limited Offer — Founding Partner</div>
     <h3 class="bundle-title">Founding Partner Accelerator</h3>
     <p style="font-size:14px;color:rgba(255,255,255,.55);margin-bottom:16px;line-height:1.6">
       <span class="ar">الحزمة الثلاثية المتكاملة لإطلاق سريع واحترافي — بسعر حصري لشركائنا المؤسسين.</span>
@@ -710,22 +1027,26 @@
       <div class="bundle-old-price ar">بدلًا من $1,550</div>
       <div class="bundle-old-price en">Instead of $1,550</div>
       <div class="bundle-new-price">$590</div>
+      <span style="font-size:13px;color:rgba(255,255,255,.45);align-self:flex-end;padding-bottom:6px" class="ar">فقط اليوم</span>
+      <span style="font-size:13px;color:rgba(255,255,255,.45);align-self:flex-end;padding-bottom:6px" class="en">Today only</span>
     </div>
     <div class="bundle-includes">
-      <div class="bundle-item"><svg class="bundle-check"><use href="#icon-check"/></svg><span class="ar">Landing Page (من $450)</span><span class="en">Landing Page (from $450)</span></div>
-      <div class="bundle-item"><svg class="bundle-check"><use href="#icon-check"/></svg><span class="ar">Sales Video (من $150)</span><span class="en">Sales Video (from $150)</span></div>
-      <div class="bundle-item"><svg class="bundle-check"><use href="#icon-check"/></svg><span class="ar">WhatsApp Automation (من $250)</span><span class="en">WhatsApp Automation (from $250)</span></div>
+      <div class="bundle-item ar">Landing Page (من $450)</div>
+      <div class="bundle-item en">Landing Page (from $450)</div>
+      <div class="bundle-item ar">Sales Video (من $150)</div>
+      <div class="bundle-item en">Sales Video (from $150)</div>
+      <div class="bundle-item ar">WhatsApp Automation (من $250)</div>
+      <div class="bundle-item en">WhatsApp Automation (from $250)</div>
     </div>
     <button class="pkg-cta cta-gold" style="max-width:360px;margin:0 auto;display:block" onclick="selectPackage('bundle')">
-      <span class="ar">احجز الحزمة الآن</span><span class="en">Claim the Bundle Now</span>
+      <span class="ar">⚡ احجز الحزمة الآن</span>
+      <span class="en">⚡ Claim the Bundle Now</span>
     </button>
   </div>
 </section>
 
-<!-- ============================================================
-     STRATEGIC VISION
-     ============================================================ -->
-<section class="vision-section" id="vision">
+<!-- STRATEGIC VISION -->
+<section class="vision-section" id="vision" style="padding-bottom:100px">
   <div style="max-width:1160px;margin:0 auto;text-align:center" class="reveal">
     <div class="section-tag" style="background:rgba(201,168,76,.09);border-color:rgba(201,168,76,.18)">
       <div class="section-tag-dot" style="background:var(--gold)"></div>
@@ -744,9 +1065,12 @@
   <div class="vision-grid reveal">
     <div class="vision-card">
       <div class="vision-header">
-        <span class="vision-tag ar">دراسة مفاهيمية #1</span><span class="vision-tag en">Concept Study #1</span>
-        <div class="vision-sector ar">مدرسة إسلامية — موسم التسجيل</div><div class="vision-sector en">Islamic School — Registration Season</div>
-        <div class="vision-subtitle ar">فرصة السوق: 12,000 أسرة مسلمة في المنطقة</div><div class="vision-subtitle en">Market opportunity: 12,000 Muslim families in region</div>
+        <span class="vision-tag ar">دراسة مفاهيمية #1</span>
+        <span class="vision-tag en">Concept Study #1</span>
+        <div class="vision-sector ar">مدرسة إسلامية — موسم التسجيل</div>
+        <div class="vision-sector en">Islamic School — Registration Season</div>
+        <div class="vision-subtitle ar">فرصة السوق: 12,000 أسرة مسلمة في المنطقة</div>
+        <div class="vision-subtitle en">Market opportunity: 12,000 Muslim families in region</div>
       </div>
       <div class="vision-dashboard">
         <div class="dash-row">
@@ -764,17 +1088,21 @@
         </div>
       </div>
       <div class="vision-footer">
-        <div class="vision-audience ar"><strong>الجمهور:</strong> آباء مسلمون، دخل متوسط-مرتفع</div>
-        <div class="vision-audience en"><strong>Audience:</strong> Muslim parents, middle-high income</div>
-        <div class="vision-strategy ar">الاستراتيجية: فانل 3 مراحل عبر Meta + Google مع retargeting</div>
-        <div class="vision-strategy en">Strategy: 3-stage funnel via Meta + Google with retargeting</div>
+        <div class="vision-audience ar">🎯 <strong>الجمهور:</strong> آباء مسلمون، دخل متوسط-مرتفع، يبحثون عن تعليم قيمي</div>
+        <div class="vision-audience en">🎯 <strong>Audience:</strong> Muslim parents, middle-high income, seeking values-based education</div>
+        <div class="vision-strategy ar">الاستراتيجية: فانل 3 مراحل (Awareness → Consideration → Registration) عبر Meta + Google مع retargeting</div>
+        <div class="vision-strategy en">Strategy: 3-stage funnel (Awareness → Consideration → Registration) via Meta + Google with retargeting</div>
       </div>
     </div>
+
     <div class="vision-card">
       <div class="vision-header">
-        <span class="vision-tag ar">دراسة مفاهيمية #2</span><span class="vision-tag en">Concept Study #2</span>
-        <div class="vision-sector ar">أكاديمية القرآن الكريم</div><div class="vision-sector en">Quran Academy — Online</div>
-        <div class="vision-subtitle ar">فرصة السوق: مسلمون في 40+ دولة</div><div class="vision-subtitle en">Market opportunity: Muslims in 40+ countries</div>
+        <span class="vision-tag ar">دراسة مفاهيمية #2</span>
+        <span class="vision-tag en">Concept Study #2</span>
+        <div class="vision-sector ar">أكاديمية القرآن الكريم</div>
+        <div class="vision-sector en">Quran Academy — Online</div>
+        <div class="vision-subtitle ar">فرصة السوق: مسلمون في 40+ دولة</div>
+        <div class="vision-subtitle en">Market opportunity: Muslims in 40+ countries</div>
       </div>
       <div class="vision-dashboard">
         <div class="dash-row">
@@ -792,17 +1120,21 @@
         </div>
       </div>
       <div class="vision-footer">
-        <div class="vision-audience ar"><strong>الجمهور:</strong> مسلمون في الغرب والعالم العربي</div>
-        <div class="vision-audience en"><strong>Audience:</strong> Muslims in the West + Arab world</div>
-        <div class="vision-strategy ar">الاستراتيجية: محتوى عربي+إنجليزي + YouTube + Email nurturing</div>
-        <div class="vision-strategy en">Strategy: Arabic+English content + YouTube ads + Email nurturing</div>
+        <div class="vision-audience ar">🎯 <strong>الجمهور:</strong> مسلمون في الغرب والعالم العربي يريدون تعلم القرآن أونلاين</div>
+        <div class="vision-audience en">🎯 <strong>Audience:</strong> Muslims in the West + Arab world seeking online Quran learning</div>
+        <div class="vision-strategy ar">الاستراتيجية: محتوى عربي+إنجليزي + إعلانات YouTube + Email nurturing + Free trial funnel</div>
+        <div class="vision-strategy en">Strategy: Arabic+English content + YouTube ads + Email nurturing + Free trial funnel</div>
       </div>
     </div>
+
     <div class="vision-card">
       <div class="vision-header">
-        <span class="vision-tag ar">دراسة مفاهيمية #3</span><span class="vision-tag en">Concept Study #3</span>
-        <div class="vision-sector ar">Halal Fintech — استثمار إسلامي</div><div class="vision-sector en">Halal Fintech — Islamic Finance</div>
-        <div class="vision-subtitle ar">فرصة السوق: $3.8 تريليون تمويل إسلامي عالمي</div><div class="vision-subtitle en">Market opportunity: $3.8T global Islamic finance market</div>
+        <span class="vision-tag ar">دراسة مفاهيمية #3</span>
+        <span class="vision-tag en">Concept Study #3</span>
+        <div class="vision-sector ar">Halal Fintech — استثمار إسلامي</div>
+        <div class="vision-sector en">Halal Fintech — Islamic Finance</div>
+        <div class="vision-subtitle ar">فرصة السوق: $3.8 تريليون تمويل إسلامي عالمي</div>
+        <div class="vision-subtitle en">Market opportunity: $3.8T global Islamic finance market</div>
       </div>
       <div class="vision-dashboard">
         <div class="dash-row">
@@ -820,90 +1152,56 @@
         </div>
       </div>
       <div class="vision-footer">
-        <div class="vision-audience ar"><strong>الجمهور:</strong> محترفون مسلمون 30-50 يبحثون عن استثمار حلال</div>
-        <div class="vision-audience en"><strong>Audience:</strong> Muslim professionals 30-50 seeking halal investment</div>
-        <div class="vision-strategy ar">الاستراتيجية: LinkedIn + Google + محتوى تعليمي + Webinars</div>
-        <div class="vision-strategy en">Strategy: LinkedIn + Google + Educational content + Webinars</div>
+        <div class="vision-audience ar">🎯 <strong>الجمهور:</strong> محترفون مسلمون 30-50 يبحثون عن استثمار حلال متوافق شرعيًا</div>
+        <div class="vision-audience en">🎯 <strong>Audience:</strong> Muslim professionals 30-50 seeking Sharia-compliant halal investment</div>
+        <div class="vision-strategy ar">الاستراتيجية: LinkedIn + Google + محتوى تعليمي + Webinars + Authority positioning</div>
+        <div class="vision-strategy en">Strategy: LinkedIn + Google + Educational content + Webinars + Authority positioning</div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ============================================================
-     WHY US
-     ============================================================ -->
+<!-- WHY US -->
 <section class="why-section">
   <div style="max-width:1060px;margin:0 auto;text-align:center" class="reveal">
     <div class="section-tag"><div class="section-tag-dot"></div><span class="ar">لماذا نحن؟</span><span class="en">Why Us?</span></div>
     <h2 class="section-title"><span class="ar">نقاط قوتنا <em>الحقيقية</em></span><span class="en">Our <em>Real</em> Strengths</span></h2>
   </div>
   <div class="why-grid">
-    <div class="why-card reveal">
-      <svg class="why-icon" style="color:var(--emerald)"><use href="#icon-mosque"/></svg>
-      <div class="why-title ar">التزام شرعي كامل</div><div class="why-title en">Full Sharia Compliance</div>
-      <div class="why-desc ar">كل محتوى وإعلان يمر بمراجعة تضمن انسجامه مع قيمكم الإسلامية</div>
-      <div class="why-desc en">Every piece of content is reviewed to ensure alignment with your Islamic values</div>
-    </div>
-    <div class="why-card reveal">
-      <svg class="why-icon" style="color:var(--emerald)"><use href="#icon-bulb"/></svg>
-      <div class="why-title ar">متحمسون لإثبات أنفسنا</div><div class="why-title en">Motivated to Prove Ourselves</div>
-      <div class="why-desc ar">طاقتنا كلها لمؤسستكم — اهتمام لا يحصل عليه عملاء الوكالات الكبيرة</div>
-      <div class="why-desc en">All our energy goes to your institution — attention big-agency clients never get</div>
-    </div>
-    <div class="why-card reveal">
-      <svg class="why-icon" style="color:var(--emerald)"><use href="#icon-chart"/></svg>
-      <div class="why-title ar">تركيز على النتائج</div><div class="why-title en">Results-Focused</div>
-      <div class="why-desc ar">نقيس الإيراد والتسجيلات لا الإعجابات — أهدافكم هي بوصلتنا</div>
-      <div class="why-desc en">We measure revenue and registrations, not likes — your goals are our compass</div>
-    </div>
-    <div class="why-card reveal">
-      <svg class="why-icon" style="color:var(--emerald)"><use href="#icon-eye"/></svg>
-      <div class="why-title ar">شفافية تامة</div><div class="why-title en">Total Transparency</div>
-      <div class="why-desc ar">تقارير واضحة ومفصّلة — لا أسرار ولا مصطلحات مبهمة</div>
-      <div class="why-desc en">Clear, detailed reports — no secrets, no confusing jargon</div>
-    </div>
-    <div class="why-card reveal">
-      <svg class="why-icon" style="color:var(--emerald)"><use href="#icon-handshake"/></svg>
-      <div class="why-title ar">شراكة لا مجرد خدمة</div><div class="why-title en">Partnership, Not Just Service</div>
-      <div class="why-desc ar">نريد أن نكبر معكم على المدى الطويل — نجاحكم هو مرجعنا للعالم</div>
-      <div class="why-desc en">We want to grow with you long-term — your success is our reference to the world</div>
-    </div>
+    <div class="why-card reveal"><span class="why-icon">🕌</span><div class="why-title ar">التزام شرعي كامل</div><div class="why-title en">Full Sharia Compliance</div><div class="why-desc ar">كل محتوى وإعلان يمر بمراجعة تضمن انسجامه مع قيمكم الإسلامية</div><div class="why-desc en">Every piece of content and ad is reviewed to ensure alignment with your Islamic values</div></div>
+    <div class="why-card reveal"><span class="why-icon">💡</span><div class="why-title ar">متحمسون لإثبات أنفسنا</div><div class="why-title en">Motivated to Prove Ourselves</div><div class="why-desc ar">طاقتنا كلها لمؤسستكم — اهتمام لا يحصل عليه عملاء الوكالات الكبيرة</div><div class="why-desc en">All our energy goes to your institution — attention big-agency clients never get</div></div>
+    <div class="why-card reveal"><span class="why-icon">📈</span><div class="why-title ar">تركيز على النتائج</div><div class="why-title en">Results-Focused</div><div class="why-desc ar">نقيس الإيراد والتسجيلات لا الإعجابات — أهدافكم هي بوصلتنا</div><div class="why-desc en">We measure revenue and registrations, not likes — your goals are our compass</div></div>
+    <div class="why-card reveal"><span class="why-icon">🔍</span><div class="why-title ar">شفافية تامة</div><div class="why-title en">Total Transparency</div><div class="why-desc ar">تقارير واضحة ومفصّلة — لا أسرار ولا مصطلحات مبهمة</div><div class="why-desc en">Clear, detailed reports — no secrets, no confusing jargon</div></div>
+    <div class="why-card reveal"><span class="why-icon">🤝</span><div class="why-title ar">شراكة لا مجرد خدمة</div><div class="why-title en">Partnership, Not Just Service</div><div class="why-desc ar">نريد أن نكبر معكم على المدى الطويل — نجاحكم هو مرجعنا للعالم</div><div class="why-desc en">We want to grow with you long-term — your success is our reference to the world</div></div>
   </div>
 </section>
 
-<!-- ============================================================
-     RISK REVERSAL
-     ============================================================ -->
+<!-- RISK REVERSAL -->
 <section class="risk-section">
   <div class="risk-inner reveal">
-    <div class="risk-icon-wrap">
-      <svg style="width:64px;height:64px;color:var(--gold-light)"><use href="#icon-shield"/></svg>
-    </div>
+    <div class="risk-icon">🛡️</div>
     <h2 class="risk-title">
       <span class="ar">لا مخاطرة على الإطلاق — <em>نحن نتحمل العبء</em></span>
       <span class="en">Zero Risk — <em>We Carry the Burden</em></span>
     </h2>
     <p class="risk-desc">
-      <span class="ar">نؤمن بما نقدمه بشكل كامل. إذا غادرت الاستشارة دون قيمة حقيقية، لم تخسر شيئًا.</span>
-      <span class="en">We fully believe in what we offer. If you leave the consultation without real value, you've lost nothing.</span>
+      <span class="ar">نؤمن بما نقدمه بشكل كامل. لهذا نقدم ضمانًا واضحًا: إذا غادرت الاستشارة دون قيمة حقيقية، لم تخسر شيئًا.</span>
+      <span class="en">We fully believe in what we offer. That's why we have a clear guarantee: if you leave the consultation without real value, you've lost nothing.</span>
     </p>
     <div class="risk-box">
-      <svg class="risk-box-icon" style="color:var(--gold-light)"><use href="#icon-lock"/></svg>
+      <span style="font-size:22px">🔒</span>
       <p>
-        <span class="ar">إذا لم نحدد خلال الجلسة <strong>3 فرص نمو قابلة للتطبيق</strong> — <strong>تحصل على Audit كامل مجانًا</strong> بلا أي التزام.</span>
-        <span class="en">If we don't identify <strong>3 actionable growth opportunities</strong> — <strong>you get a complete Audit for free</strong> with no obligation.</span>
+        <span class="ar">إذا لم نحدد خلال جلسة الاستشارة <strong>3 فرص نمو قابلة للتطبيق</strong> — <strong>تحصل على Audit كامل مجانًا</strong> بلا أي التزام.</span>
+        <span class="en">If we don't identify <strong>3 actionable growth opportunities</strong> in your consultation — <strong>you get a complete Audit for free</strong> with no obligation.</span>
       </p>
     </div>
     <a href="#form" class="btn-primary" style="display:inline-flex">
-      <svg width="16" height="16"><use href="#icon-calendar"/></svg>
-      <span class="ar">احجز جلستك المجانية الآن</span><span class="en">Book Your Free Session Now</span>
+      📅 <span class="ar">احجز جلستك المجانية الآن</span><span class="en">Book Your Free Session Now</span>
     </a>
   </div>
 </section>
 
-<!-- ============================================================
-     FAQ
-     ============================================================ -->
+<!-- FAQ -->
 <section class="faq-section" id="faq">
   <div style="max-width:760px;margin:0 auto;text-align:center" class="reveal">
     <div class="section-tag"><div class="section-tag-dot"></div><span class="ar">الأسئلة الشائعة</span><span class="en">FAQ</span></div>
@@ -911,35 +1209,33 @@
   </div>
   <div class="faq-grid">
     <div class="faq-item reveal">
-      <div class="faq-q"><span class="faq-q-text ar">لماذا أسعاركم أقل من الوكالات الأخرى؟</span><span class="faq-q-text en">Why are your prices lower than other agencies?</span><div class="faq-icon"><svg><use href="#icon-plus"/></svg></div></div>
-      <div class="faq-a"><div class="faq-a-inner"><span class="ar">لأننا صادقون — نحن في بداية طريقنا ونريد بناء سمعتنا بنتائج حقيقية. نقدم أسعارًا تنافسية لأن هدفنا إثبات قيمتنا الفعلية إلى جانبكم.</span><span class="en">Because we're honest — we're at the start of our journey and want to build our reputation through real results. We offer competitive pricing because our goal is to prove our actual value alongside you.</span></div></div>
+      <div class="faq-q"><span class="faq-q-text ar">لماذا أسعاركم أقل من الوكالات الأخرى؟</span><span class="faq-q-text en">Why are your prices lower than other agencies?</span><div class="faq-icon">+</div></div>
+      <div class="faq-a"><div class="faq-a-inner"><span class="ar">لأننا صادقون — نحن في بداية طريقنا ونريد بناء سمعتنا بنتائج حقيقية. نقدم أسعارًا تنافسية لأن هدفنا إثبات قيمتنا الفعلية إلى جانبكم، ثم الاستمرار معكم شراكة طويلة الأمد.</span><span class="en">Because we're honest — we're at the start of our journey and want to build our reputation through real results. We offer competitive pricing because our goal is to prove our actual value alongside you, then continue as a long-term partnership.</span></div></div>
     </div>
     <div class="faq-item reveal">
-      <div class="faq-q"><span class="faq-q-text ar">متى أرى نتائج ملموسة؟</span><span class="faq-q-text en">When will I see tangible results?</span><div class="faq-icon"><svg><use href="#icon-plus"/></svg></div></div>
-      <div class="faq-a"><div class="faq-a-inner"><span class="ar">للإعلانات المدفوعة: بيانات أولية خلال 2-3 أسابيع، نتائج واضحة في الشهر الثاني. للعضوي: الشهر الأول إعداد وتأسيس، نتائج تظهر من الشهر الثالث.</span><span class="en">For paid ads: initial data within 2-3 weeks, clear results by month two. For organic: month one is setup, compounding results appear from month three onwards.</span></div></div>
+      <div class="faq-q"><span class="faq-q-text ar">متى أرى نتائج ملموسة؟</span><span class="faq-q-text en">When will I see tangible results?</span><div class="faq-icon">+</div></div>
+      <div class="faq-a"><div class="faq-a-inner"><span class="ar">للإعلانات المدفوعة: بيانات أولية خلال 2-3 أسابيع، نتائج واضحة في الشهر الثاني. للعضوي: الشهر الأول إعداد وتأسيس، نتائج متراكمة تظهر من الشهر الثالث وما بعده.</span><span class="en">For paid ads: initial data within 2-3 weeks, clear results by month two. For organic: month one is setup and foundation, compounding results appear from month three onwards.</span></div></div>
     </div>
     <div class="faq-item reveal">
-      <div class="faq-q"><span class="faq-q-text ar">ميزانية الإعلانات منفصلة عن رسومكم؟</span><span class="faq-q-text en">Is ad spend separate from your fees?</span><div class="faq-icon"><svg><use href="#icon-plus"/></svg></div></div>
-      <div class="faq-a"><div class="faq-a-inner"><span class="ar">نعم. رسومنا الشهرية تشمل الإدارة والاستراتيجية والإبداع فقط. ميزانية الإعلانات (Meta, Google) تُدار عبر حسابكم مباشرة.</span><span class="en">Yes. Our monthly fees cover management, strategy, and creative only. Ad spend (Meta, Google) is managed through your own account and is in addition to our fees.</span></div></div>
+      <div class="faq-q"><span class="faq-q-text ar">ميزانية الإعلانات منفصلة عن رسومكم؟</span><span class="faq-q-text en">Is ad spend separate from your fees?</span><div class="faq-icon">+</div></div>
+      <div class="faq-a"><div class="faq-a-inner"><span class="ar">نعم. رسومنا الشهرية تشمل الإدارة والاستراتيجية والإبداع فقط. ميزانية الإعلانات (Meta, Google) تُدار عبر حسابكم مباشرة وتُضاف فوق رسومنا.</span><span class="en">Yes. Our monthly fees cover management, strategy, and creative only. Ad spend (Meta, Google) is managed through your own account and is in addition to our fees.</span></div></div>
     </div>
     <div class="faq-item reveal">
-      <div class="faq-q"><span class="faq-q-text ar">هل هناك عقود ملزمة طويلة الأمد؟</span><span class="faq-q-text en">Are there long-term binding contracts?</span><div class="faq-icon"><svg><use href="#icon-plus"/></svg></div></div>
-      <div class="faq-a"><div class="faq-a-inner"><span class="ar">لا نُلزم أحدًا. ننصح بالاستمرار 3 أشهر لتحقيق نتائج حقيقية، لكن عقودنا مرنة.</span><span class="en">We don't bind anyone. We recommend a 3-month commitment for real results, but our contracts are flexible.</span></div></div>
+      <div class="faq-q"><span class="faq-q-text ar">هل هناك عقود ملزمة طويلة الأمد؟</span><span class="faq-q-text en">Are there long-term binding contracts?</span><div class="faq-icon">+</div></div>
+      <div class="faq-a"><div class="faq-a-inner"><span class="ar">لا نُلزم أحدًا. ننصح بالاستمرار 3 أشهر لتحقيق نتائج حقيقية، لكن عقودنا مرنة. شركاؤنا يستمرون معنا لأن النتائج تتحدث عن نفسها — لا لأن عقدًا يُلزمهم.</span><span class="en">We don't bind anyone. We recommend a 3-month commitment for real results, but our contracts are flexible. Partners stay because results speak for themselves — not because a contract forces them.</span></div></div>
     </div>
     <div class="faq-item reveal">
-      <div class="faq-q"><span class="faq-q-text ar">هل أستطيع شراء خدمة واحدة فقط بدون باقة؟</span><span class="faq-q-text en">Can I buy a single service without a full package?</span><div class="faq-icon"><svg><use href="#icon-plus"/></svg></div></div>
-      <div class="faq-a"><div class="faq-a-inner"><span class="ar">بالطبع! الخدمات الإضافية متاحة للشراء بشكل مستقل تمامًا دون أي اشتراك.</span><span class="en">Absolutely! The add-on services are available for purchase completely independently with no package subscription required.</span></div></div>
+      <div class="faq-q"><span class="faq-q-text ar">هل أستطيع شراء خدمة واحدة فقط بدون باقة؟</span><span class="faq-q-text en">Can I buy a single service without a full package?</span><div class="faq-icon">+</div></div>
+      <div class="faq-a"><div class="faq-a-inner"><span class="ar">بالطبع! الخدمات الإضافية (Landing Page، موقع ويب، فيديو، WhatsApp Automation) متاحة للشراء بشكل مستقل تمامًا.</span><span class="en">Absolutely! The add-on services (Landing Page, Website, Video, WhatsApp Automation) are available for purchase completely independently with no package subscription required.</span></div></div>
     </div>
     <div class="faq-item reveal">
-      <div class="faq-q"><span class="faq-q-text ar">هل تعملون مع مؤسسات خارج مصر؟</span><span class="faq-q-text en">Do you work with institutions outside Egypt?</span><div class="faq-icon"><svg><use href="#icon-plus"/></svg></div></div>
-      <div class="faq-a"><div class="faq-a-inner"><span class="ar">نعم. نخدم مؤسسات في كامل المنطقة العربية وخارجها — فهمنا العميق للثقافة الإسلامية يتجاوز أي حدود جغرافية.</span><span class="en">Yes. We serve institutions across the entire Arab world and beyond — our deep understanding of Islamic culture transcends any geographic boundaries.</span></div></div>
+      <div class="faq-q"><span class="faq-q-text ar">هل تعملون مع مؤسسات خارج مصر؟</span><span class="faq-q-text en">Do you work with institutions outside Egypt?</span><div class="faq-icon">+</div></div>
+      <div class="faq-a"><div class="faq-a-inner"><span class="ar">نعم. نخدم مؤسسات في كامل المنطقة العربية وخارجها — أينما كان جمهوركم المسلم. فهمنا العميق للثقافة الإسلامية يتجاوز أي حدود جغرافية.</span><span class="en">Yes. We serve institutions across the entire Arab world and beyond — wherever your Muslim audience is. Our deep understanding of Islamic culture transcends any geographic boundaries.</span></div></div>
     </div>
   </div>
 </section>
 
-<!-- ============================================================
-     FORM
-     ============================================================ -->
+<!-- FORM -->
 <section class="form-section" id="form">
   <div style="max-width:680px;margin:0 auto;text-align:center" class="reveal">
     <div class="section-tag" style="background:rgba(201,168,76,.09);border-color:rgba(201,168,76,.18);display:inline-flex">
@@ -956,14 +1252,16 @@
       <span class="en">30 minutes — we analyze your situation and provide a clear growth roadmap, no commitment</span>
     </p>
   </div>
-
   <div class="form-wrapper reveal">
+
+    <!-- Live Summary Bar -->
     <div class="form-summary-bar" id="summaryBar">
       <div class="form-summary-title ar">اختياراتكم الحالية</div>
       <div class="form-summary-title en">Your Current Selections</div>
       <div class="form-summary-items" id="summaryItems"></div>
       <div class="form-summary-total">
-        <span class="ar">المجموع المتوقع: </span><span class="en">Expected Total: </span>
+        <span class="ar">المجموع المتوقع: </span>
+        <span class="en">Expected Total: </span>
         <strong id="summaryTotal">$0</strong>
         <span style="font-size:11px;color:rgba(255,255,255,.35)" class="ar"> / شهر</span>
         <span style="font-size:11px;color:rgba(255,255,255,.35)" class="en"> / month</span>
@@ -971,6 +1269,7 @@
     </div>
 
     <div class="form-card">
+      <!-- Progress -->
       <div class="progress-wrap">
         <div class="progress-bar">
           <div class="progress-step active" id="pb1"></div>
@@ -989,39 +1288,120 @@
       <div class="form-step active" id="step1">
         <div class="step-title ar">الخدمات المطلوبة + معلومات التواصل</div>
         <div class="step-title en">Services Needed + Contact Info</div>
+
         <div class="form-section-divider ar">اختر خدماتك (اختيار متعدد)</div>
         <div class="form-section-divider en">Choose Your Services (Multiple Selection)</div>
 
-        <p style="font-size:12px;color:var(--gold-light);font-weight:700;letter-spacing:1px;text-transform:uppercase;margin-bottom:10px">
-          <svg width="14" height="14" style="vertical-align:middle"><use href="#icon-megaphone"/></svg>
-          <span class="ar">باقات الإعلانات المدفوعة</span><span class="en">Paid Ads Packages</span>
-        </p>
+        <p style="font-size:12px;color:var(--gold-light);font-weight:700;letter-spacing:1px;text-transform:uppercase;margin-bottom:10px">📈 <span class="ar">باقات الإعلانات المدفوعة</span><span class="en">Paid Ads Packages</span></p>
         <div class="checkbox-cards-grid">
-          <label class="checkbox-card" data-key="launch" data-price="197" data-label-ar="Launch Ads" data-label-en="Launch Ads"><input type="checkbox" name="svc" value="launch"><div class="checkbox-card-check"><svg viewBox="0 0 12 12" fill="none"><polyline points="2,6 5,9 10,3" stroke="#14191e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="checkbox-card-body"><span class="checkbox-card-type ar">مدفوع</span><span class="checkbox-card-type en">Paid</span><span class="checkbox-card-name">Launch Ads</span><span class="checkbox-card-price">Starting from $197/mo</span></div></label>
-          <label class="checkbox-card" data-key="growth" data-price="397" data-label-ar="Growth Ads" data-label-en="Growth Ads"><input type="checkbox" name="svc" value="growth"><div class="checkbox-card-check"><svg viewBox="0 0 12 12" fill="none"><polyline points="2,6 5,9 10,3" stroke="#14191e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="checkbox-card-body"><span class="checkbox-card-type ar">مدفوع</span><span class="checkbox-card-type en">Paid</span><span class="checkbox-card-name">Growth Ads</span><span class="checkbox-card-price">Starting from $397/mo</span></div></label>
-          <label class="checkbox-card" data-key="authority" data-price="697" data-label-ar="Authority Ads" data-label-en="Authority Ads"><input type="checkbox" name="svc" value="authority"><div class="checkbox-card-check"><svg viewBox="0 0 12 12" fill="none"><polyline points="2,6 5,9 10,3" stroke="#14191e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="checkbox-card-body"><span class="checkbox-card-type ar">مدفوع</span><span class="checkbox-card-type en">Paid</span><span class="checkbox-card-name">Authority Ads</span><span class="checkbox-card-price">Starting from $697/mo</span></div></label>
-          <label class="checkbox-card" data-key="elite" data-price="1490" data-label-ar="Elite Partnership" data-label-en="Elite Partnership"><input type="checkbox" name="svc" value="elite"><div class="checkbox-card-check"><svg viewBox="0 0 12 12" fill="none"><polyline points="2,6 5,9 10,3" stroke="#14191e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="checkbox-card-body"><span class="checkbox-card-type" style="color:var(--gold-light)">Premium</span><span class="checkbox-card-name">Elite Partnership</span><span class="checkbox-card-price">Starting from $1,490/mo</span></div></label>
+          <label class="checkbox-card" data-key="launch" data-price="197" data-label-ar="Launch Ads" data-label-en="Launch Ads">
+            <input type="checkbox" name="svc" value="launch">
+            <div class="checkbox-card-check"><svg viewBox="0 0 12 12" fill="none"><polyline points="2,6 5,9 10,3" stroke="#14191e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <div class="checkbox-card-body">
+              <span class="checkbox-card-type ar">مدفوع</span><span class="checkbox-card-type en">Paid</span>
+              <span class="checkbox-card-name">Launch Ads</span>
+              <span class="checkbox-card-price">Starting from $197/mo</span>
+            </div>
+          </label>
+          <label class="checkbox-card" data-key="growth" data-price="397" data-label-ar="Growth Ads" data-label-en="Growth Ads">
+            <input type="checkbox" name="svc" value="growth">
+            <div class="checkbox-card-check"><svg viewBox="0 0 12 12" fill="none"><polyline points="2,6 5,9 10,3" stroke="#14191e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <div class="checkbox-card-body">
+              <span class="checkbox-card-type ar">مدفوع</span><span class="checkbox-card-type en">Paid</span>
+              <span class="checkbox-card-name">Growth Ads</span>
+              <span class="checkbox-card-price">Starting from $397/mo</span>
+            </div>
+          </label>
+          <label class="checkbox-card" data-key="authority" data-price="697" data-label-ar="Authority Ads" data-label-en="Authority Ads">
+            <input type="checkbox" name="svc" value="authority">
+            <div class="checkbox-card-check"><svg viewBox="0 0 12 12" fill="none"><polyline points="2,6 5,9 10,3" stroke="#14191e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <div class="checkbox-card-body">
+              <span class="checkbox-card-type ar">مدفوع</span><span class="checkbox-card-type en">Paid</span>
+              <span class="checkbox-card-name">Authority Ads</span>
+              <span class="checkbox-card-price">Starting from $697/mo</span>
+            </div>
+          </label>
+          <label class="checkbox-card" data-key="elite" data-price="1490" data-label-ar="Elite Partnership" data-label-en="Elite Partnership">
+            <input type="checkbox" name="svc" value="elite">
+            <div class="checkbox-card-check"><svg viewBox="0 0 12 12" fill="none"><polyline points="2,6 5,9 10,3" stroke="#14191e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <div class="checkbox-card-body">
+              <span class="checkbox-card-type" style="color:var(--gold-light)">Premium</span>
+              <span class="checkbox-card-name">Elite Partnership</span>
+              <span class="checkbox-card-price">Starting from $1,490/mo</span>
+            </div>
+          </label>
         </div>
 
-        <p style="font-size:12px;color:var(--gold-light);font-weight:700;letter-spacing:1px;text-transform:uppercase;margin:16px 0 10px">
-          <svg width="14" height="14" style="vertical-align:middle"><use href="#icon-pen"/></svg>
-          <span class="ar">الباقات العضوية</span><span class="en">Organic Packages</span>
-        </p>
+        <p style="font-size:12px;color:var(--gold-light);font-weight:700;letter-spacing:1px;text-transform:uppercase;margin:16px 0 10px">🏛️ <span class="ar">الباقات العضوية</span><span class="en">Organic Packages</span></p>
         <div class="checkbox-cards-grid">
-          <label class="checkbox-card" data-key="organic-presence" data-price="199" data-label-ar="Organic Presence" data-label-en="Organic Presence"><input type="checkbox" name="svc" value="organic-presence"><div class="checkbox-card-check"><svg viewBox="0 0 12 12" fill="none"><polyline points="2,6 5,9 10,3" stroke="#14191e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="checkbox-card-body"><span class="checkbox-card-type ar">عضوي</span><span class="checkbox-card-type en">Organic</span><span class="checkbox-card-name">Organic Presence</span><span class="checkbox-card-price">Starting from $199/mo</span></div></label>
-          <label class="checkbox-card" data-key="organic-growth" data-price="379" data-label-ar="Organic Growth" data-label-en="Organic Growth"><input type="checkbox" name="svc" value="organic-growth"><div class="checkbox-card-check"><svg viewBox="0 0 12 12" fill="none"><polyline points="2,6 5,9 10,3" stroke="#14191e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="checkbox-card-body"><span class="checkbox-card-type ar">عضوي</span><span class="checkbox-card-type en">Organic</span><span class="checkbox-card-name">Organic Growth</span><span class="checkbox-card-price">Starting from $379/mo</span></div></label>
+          <label class="checkbox-card" data-key="organic-presence" data-price="199" data-label-ar="Organic Presence" data-label-en="Organic Presence">
+            <input type="checkbox" name="svc" value="organic-presence">
+            <div class="checkbox-card-check"><svg viewBox="0 0 12 12" fill="none"><polyline points="2,6 5,9 10,3" stroke="#14191e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <div class="checkbox-card-body">
+              <span class="checkbox-card-type ar">عضوي</span><span class="checkbox-card-type en">Organic</span>
+              <span class="checkbox-card-name">Organic Presence</span>
+              <span class="checkbox-card-price">Starting from $199/mo</span>
+            </div>
+          </label>
+          <label class="checkbox-card" data-key="organic-growth" data-price="379" data-label-ar="Organic Growth" data-label-en="Organic Growth">
+            <input type="checkbox" name="svc" value="organic-growth">
+            <div class="checkbox-card-check"><svg viewBox="0 0 12 12" fill="none"><polyline points="2,6 5,9 10,3" stroke="#14191e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <div class="checkbox-card-body">
+              <span class="checkbox-card-type ar">عضوي</span><span class="checkbox-card-type en">Organic</span>
+              <span class="checkbox-card-name">Organic Growth</span>
+              <span class="checkbox-card-price">Starting from $379/mo</span>
+            </div>
+          </label>
         </div>
 
-        <p style="font-size:12px;color:var(--gold-light);font-weight:700;letter-spacing:1px;text-transform:uppercase;margin:16px 0 10px">
-          <svg width="14" height="14" style="vertical-align:middle"><use href="#icon-star"/></svg>
-          <span class="ar">الخدمات الإضافية</span><span class="en">Add-on Services</span>
-        </p>
+        <p style="font-size:12px;color:var(--gold-light);font-weight:700;letter-spacing:1px;text-transform:uppercase;margin:16px 0 10px">✨ <span class="ar">الخدمات الإضافية</span><span class="en">Add-on Services</span></p>
         <div class="checkbox-cards-grid">
-          <label class="checkbox-card" data-key="landing" data-price="450" data-label-ar="Landing Page" data-label-en="Landing Page"><input type="checkbox" name="svc" value="landing"><div class="checkbox-card-check"><svg viewBox="0 0 12 12" fill="none"><polyline points="2,6 5,9 10,3" stroke="#14191e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="checkbox-card-body"><span class="checkbox-card-type ar">إضافة</span><span class="checkbox-card-type en">Add-on</span><span class="checkbox-card-name">Landing Page</span><span class="checkbox-card-price">Starting from $450</span></div></label>
-          <label class="checkbox-card" data-key="website" data-price="950" data-label-ar="Full Website" data-label-en="Full Website"><input type="checkbox" name="svc" value="website"><div class="checkbox-card-check"><svg viewBox="0 0 12 12" fill="none"><polyline points="2,6 5,9 10,3" stroke="#14191e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="checkbox-card-body"><span class="checkbox-card-type ar">إضافة</span><span class="checkbox-card-type en">Add-on</span><span class="checkbox-card-name">Full Website</span><span class="checkbox-card-price">Starting from $950</span></div></label>
-          <label class="checkbox-card" data-key="video" data-price="150" data-label-ar="Video Creative" data-label-en="Video Creative"><input type="checkbox" name="svc" value="video"><div class="checkbox-card-check"><svg viewBox="0 0 12 12" fill="none"><polyline points="2,6 5,9 10,3" stroke="#14191e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="checkbox-card-body"><span class="checkbox-card-type ar">إضافة</span><span class="checkbox-card-type en">Add-on</span><span class="checkbox-card-name">Video Creative</span><span class="checkbox-card-price">Starting from $150</span></div></label>
-          <label class="checkbox-card" data-key="whatsapp" data-price="250" data-label-ar="WhatsApp Automation" data-label-en="WhatsApp Automation"><input type="checkbox" name="svc" value="whatsapp"><div class="checkbox-card-check"><svg viewBox="0 0 12 12" fill="none"><polyline points="2,6 5,9 10,3" stroke="#14191e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="checkbox-card-body"><span class="checkbox-card-type ar">إضافة</span><span class="checkbox-card-type en">Add-on</span><span class="checkbox-card-name">WhatsApp Automation</span><span class="checkbox-card-price">Starting from $250/mo</span></div></label>
-          <label class="checkbox-card" data-key="bundle" data-price="590" data-label-ar="Accelerator Bundle" data-label-en="Accelerator Bundle" style="grid-column:1/-1;border-color:rgba(201,168,76,.3);background:rgba(201,168,76,.04)"><input type="checkbox" name="svc" value="bundle"><div class="checkbox-card-check"><svg viewBox="0 0 12 12" fill="none"><polyline points="2,6 5,9 10,3" stroke="#14191e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="checkbox-card-body"><span class="checkbox-card-type" style="color:var(--gold-light)">LIMITED OFFER</span><span class="checkbox-card-name">Founding Partner Accelerator Bundle</span><span class="checkbox-card-price">$590 <span class="ar">(بدلًا من $1,550)</span><span class="en">(instead of $1,550)</span></span></div></label>
+          <label class="checkbox-card" data-key="landing" data-price="450" data-label-ar="Landing Page" data-label-en="Landing Page">
+            <input type="checkbox" name="svc" value="landing">
+            <div class="checkbox-card-check"><svg viewBox="0 0 12 12" fill="none"><polyline points="2,6 5,9 10,3" stroke="#14191e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <div class="checkbox-card-body">
+              <span class="checkbox-card-type ar">إضافة</span><span class="checkbox-card-type en">Add-on</span>
+              <span class="checkbox-card-name">Landing Page</span>
+              <span class="checkbox-card-price">Starting from $450</span>
+            </div>
+          </label>
+          <label class="checkbox-card" data-key="website" data-price="950" data-label-ar="Full Website" data-label-en="Full Website">
+            <input type="checkbox" name="svc" value="website">
+            <div class="checkbox-card-check"><svg viewBox="0 0 12 12" fill="none"><polyline points="2,6 5,9 10,3" stroke="#14191e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <div class="checkbox-card-body">
+              <span class="checkbox-card-type ar">إضافة</span><span class="checkbox-card-type en">Add-on</span>
+              <span class="checkbox-card-name">Full Website</span>
+              <span class="checkbox-card-price">Starting from $950</span>
+            </div>
+          </label>
+          <label class="checkbox-card" data-key="video" data-price="150" data-label-ar="Video Creative" data-label-en="Video Creative">
+            <input type="checkbox" name="svc" value="video">
+            <div class="checkbox-card-check"><svg viewBox="0 0 12 12" fill="none"><polyline points="2,6 5,9 10,3" stroke="#14191e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <div class="checkbox-card-body">
+              <span class="checkbox-card-type ar">إضافة</span><span class="checkbox-card-type en">Add-on</span>
+              <span class="checkbox-card-name">Video Creative</span>
+              <span class="checkbox-card-price">Starting from $150</span>
+            </div>
+          </label>
+          <label class="checkbox-card" data-key="whatsapp" data-price="250" data-label-ar="WhatsApp Automation" data-label-en="WhatsApp Automation">
+            <input type="checkbox" name="svc" value="whatsapp">
+            <div class="checkbox-card-check"><svg viewBox="0 0 12 12" fill="none"><polyline points="2,6 5,9 10,3" stroke="#14191e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <div class="checkbox-card-body">
+              <span class="checkbox-card-type ar">إضافة</span><span class="checkbox-card-type en">Add-on</span>
+              <span class="checkbox-card-name">WhatsApp Automation</span>
+              <span class="checkbox-card-price">Starting from $250/mo</span>
+            </div>
+          </label>
+          <label class="checkbox-card" data-key="bundle" data-price="590" data-label-ar="Accelerator Bundle" data-label-en="Accelerator Bundle" style="grid-column:1/-1;border-color:rgba(201,168,76,.3);background:rgba(201,168,76,.04)">
+            <input type="checkbox" name="svc" value="bundle">
+            <div class="checkbox-card-check"><svg viewBox="0 0 12 12" fill="none"><polyline points="2,6 5,9 10,3" stroke="#14191e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <div class="checkbox-card-body">
+              <span class="checkbox-card-type" style="color:var(--gold-light)">⚡ LIMITED OFFER</span>
+              <span class="checkbox-card-name ar">Founding Partner Accelerator Bundle</span>
+              <span class="checkbox-card-name en">Founding Partner Accelerator Bundle</span>
+              <span class="checkbox-card-price">$590 <span class="ar">(بدلًا من $1,550)</span><span class="en">(instead of $1,550)</span></span>
+            </div>
+          </label>
         </div>
 
         <label class="checkbox-card" data-key="consult" data-price="0" data-label-ar="استشارة فقط" data-label-en="Consultation Only" style="margin-top:4px">
@@ -1034,10 +1414,11 @@
         </label>
 
         <div class="form-validation-hint" id="hint-svc" style="color:#fca5a5">
-          <span class="ar">يرجى اختيار خدمة واحدة على الأقل للمتابعة</span>
-          <span class="en">Please select at least one service to continue</span>
+          <span class="ar">⚠️ يرجى اختيار خدمة واحدة على الأقل للمتابعة</span>
+          <span class="en">⚠️ Please select at least one service to continue</span>
         </div>
 
+        <!-- Contact Info -->
         <div class="form-section-divider ar" style="margin-top:28px">معلومات التواصل</div>
         <div class="form-section-divider en" style="margin-top:28px">Contact Information</div>
 
@@ -1078,7 +1459,7 @@
         </div>
         <div class="form-error" id="err1"></div>
         <div class="form-nav">
-          <button class="form-btn-next" onclick="validateStep1()"><span class="ar">التالي</span><span class="en">Next</span></button>
+          <button class="form-btn-next" onclick="validateStep1()"><span class="ar">التالي ←</span><span class="en">Next →</span></button>
         </div>
       </div>
 
@@ -1089,26 +1470,31 @@
         <div class="form-group">
           <label class="form-label ar">نوع النشاط *</label><label class="form-label en">Business Type *</label>
           <div class="radio-group">
-            <label class="radio-opt"><input type="radio" name="biz" value="مدرسة إسلامية"><span class="ar">مدرسة إسلامية</span><span class="en">Islamic School</span></label>
-            <label class="radio-opt"><input type="radio" name="biz" value="أكاديمية تعليمية"><span class="ar">أكاديمية تعليمية</span><span class="en">Educational Academy</span></label>
-            <label class="radio-opt"><input type="radio" name="biz" value="مركز قرآن"><span class="ar">مركز القرآن الكريم</span><span class="en">Quran Center</span></label>
-            <label class="radio-opt"><input type="radio" name="biz" value="Halal Fintech"><span>Halal Fintech</span></label>
-            <label class="radio-opt"><input type="radio" name="biz" value="أخرى"><span class="ar">مشروع قيمي آخر</span><span class="en">Other Value-Driven Project</span></label>
+            <label class="radio-opt"><input type="radio" name="biz" value="مدرسة إسلامية"><span class="ar">🏫 مدرسة إسلامية</span><span class="en">🏫 Islamic School</span></label>
+            <label class="radio-opt"><input type="radio" name="biz" value="أكاديمية تعليمية"><span class="ar">🎓 أكاديمية تعليمية</span><span class="en">🎓 Educational Academy</span></label>
+            <label class="radio-opt"><input type="radio" name="biz" value="مركز قرآن"><span class="ar">📖 مركز القرآن الكريم</span><span class="en">📖 Quran Center</span></label>
+            <label class="radio-opt"><input type="radio" name="biz" value="Halal Fintech"><span>💳 Halal Fintech</span></label>
+            <label class="radio-opt"><input type="radio" name="biz" value="أخرى"><span class="ar">✨ مشروع قيمي آخر</span><span class="en">✨ Other Value-Driven Project</span></label>
           </div>
         </div>
         <div class="form-row">
           <div class="form-group">
             <label class="form-label ar">عدد أعضاء الفريق</label><label class="form-label en">Team Members</label>
-            <select class="form-input" id="f_team"><option>1-3</option><option>4-10</option><option>10-30</option><option>30+</option></select>
+            <select class="form-input" id="f_team">
+              <option>1-3</option><option>4-10</option><option>10-30</option><option>30+</option>
+            </select>
           </div>
           <div class="form-group">
             <label class="form-label ar">عدد الطلاب / العملاء الحاليين</label><label class="form-label en">Current Students / Clients</label>
-            <select class="form-input" id="f_clients"><option class="ar">ما زلنا نبدأ</option><option>1-50</option><option>50-200</option><option>200+</option></select>
+            <select class="form-input" id="f_clients">
+              <option class="ar">ما زلنا نبدأ</option>
+              <option>1-50</option><option>50-200</option><option>200+</option>
+            </select>
           </div>
         </div>
         <div class="form-nav">
-          <button class="form-btn-back" onclick="goStep(1)"><span class="ar">رجوع</span><span class="en">Back</span></button>
-          <button class="form-btn-next" onclick="goStep(3)"><span class="ar">التالي</span><span class="en">Next</span></button>
+          <button class="form-btn-back" onclick="goStep(1)"><span class="ar">→ رجوع</span><span class="en">← Back</span></button>
+          <button class="form-btn-next" onclick="goStep(3)"><span class="ar">التالي ←</span><span class="en">Next →</span></button>
         </div>
       </div>
 
@@ -1118,29 +1504,29 @@
         <div class="step-title en">Monthly Marketing Budget</div>
         <p style="font-size:13px;color:rgba(255,255,255,.4);margin-bottom:18px"><span class="ar">شاملة رسومنا + ميزانية الإعلانات</span><span class="en">Including our fees + ad spend</span></p>
         <div class="radio-group">
-          <label class="radio-opt"><input type="radio" name="budget" value="أقل من $300"><span class="ar">أقل من $300/شهر</span><span class="en">Less than $300/month</span></label>
+          <label class="radio-opt"><input type="radio" name="budget" value="أقل من $300"><span class="ar">💰 أقل من $300/شهر</span><span class="en">💰 Less than $300/month</span></label>
           <label class="radio-opt"><input type="radio" name="budget" value="$300-$700"><span>$300 – $700/month</span></label>
           <label class="radio-opt"><input type="radio" name="budget" value="$700-$1500"><span>$700 – $1,500/month</span></label>
           <label class="radio-opt"><input type="radio" name="budget" value="$1500+"><span>$1,500+/month</span></label>
         </div>
         <div class="form-nav">
-          <button class="form-btn-back" onclick="goStep(2)"><span class="ar">رجوع</span><span class="en">Back</span></button>
-          <button class="form-btn-next" onclick="goStep(4)"><span class="ar">التالي</span><span class="en">Next</span></button>
+          <button class="form-btn-back" onclick="goStep(2)"><span class="ar">→ رجوع</span><span class="en">← Back</span></button>
+          <button class="form-btn-next" onclick="goStep(4)"><span class="ar">التالي ←</span><span class="en">Next →</span></button>
         </div>
       </div>
 
       <!-- STEP 4 -->
       <div class="form-step" id="step4">
         <div class="step-title ar">أهدافكم وتحدياتكم</div>
-        <div class="step-title en">Goals &amp; Challenges</div>
+        <div class="step-title en">Goals & Challenges</div>
         <div class="form-group">
           <label class="form-label ar">ما الهدف الأساسي؟</label><label class="form-label en">Primary Goal?</label>
           <div class="radio-group">
-            <label class="radio-opt"><input type="radio" name="goal" value="تسجيلات"><span class="ar">زيادة التسجيلات</span><span class="en">Increase Registrations</span></label>
-            <label class="radio-opt"><input type="radio" name="goal" value="Leads"><span class="ar">توليد Leads مؤهلة</span><span class="en">Generate Qualified Leads</span></label>
-            <label class="radio-opt"><input type="radio" name="goal" value="مبيعات"><span class="ar">زيادة المبيعات</span><span class="en">Increase Sales</span></label>
-            <label class="radio-opt"><input type="radio" name="goal" value="Branding"><span class="ar">بناء Brand Authority</span><span class="en">Build Brand Authority</span></label>
-            <label class="radio-opt"><input type="radio" name="goal" value="Expansion"><span class="ar">التوسع لأسواق جديدة</span><span class="en">Expand to New Markets</span></label>
+            <label class="radio-opt"><input type="radio" name="goal" value="تسجيلات"><span class="ar">📝 زيادة التسجيلات</span><span class="en">📝 Increase Registrations</span></label>
+            <label class="radio-opt"><input type="radio" name="goal" value="Leads"><span class="ar">🎯 توليد Leads مؤهلة</span><span class="en">🎯 Generate Qualified Leads</span></label>
+            <label class="radio-opt"><input type="radio" name="goal" value="مبيعات"><span class="ar">💰 زيادة المبيعات</span><span class="en">💰 Increase Sales</span></label>
+            <label class="radio-opt"><input type="radio" name="goal" value="Branding"><span class="ar">🏆 بناء Brand Authority</span><span class="en">🏆 Build Brand Authority</span></label>
+            <label class="radio-opt"><input type="radio" name="goal" value="Expansion"><span class="ar">🌍 التوسع لأسواق جديدة</span><span class="en">🌍 Expand to New Markets</span></label>
           </div>
         </div>
         <div class="form-group" style="margin-top:16px">
@@ -1148,8 +1534,8 @@
           <textarea id="f_challenge" class="form-input" rows="3" placeholder="..." style="resize:none"></textarea>
         </div>
         <div class="form-nav">
-          <button class="form-btn-back" onclick="goStep(3)"><span class="ar">رجوع</span><span class="en">Back</span></button>
-          <button class="form-btn-next" onclick="goStep(5)"><span class="ar">التالي</span><span class="en">Next</span></button>
+          <button class="form-btn-back" onclick="goStep(3)"><span class="ar">→ رجوع</span><span class="en">← Back</span></button>
+          <button class="form-btn-next" onclick="goStep(5)"><span class="ar">التالي ←</span><span class="en">Next →</span></button>
         </div>
       </div>
 
@@ -1158,10 +1544,10 @@
         <div class="step-title ar">متى تريدون البدء؟</div>
         <div class="step-title en">When Do You Want to Start?</div>
         <div class="radio-group">
-          <label class="radio-opt"><input type="radio" name="timing" value="فورًا"><span class="ar">فورًا — جاهزون للبدء</span><span class="en">Now — ready to start</span></label>
-          <label class="radio-opt"><input type="radio" name="timing" value="خلال أسبوع"><span class="ar">خلال أسبوع</span><span class="en">Within a week</span></label>
-          <label class="radio-opt"><input type="radio" name="timing" value="خلال شهر"><span class="ar">خلال شهر</span><span class="en">Within a month</span></label>
-          <label class="radio-opt"><input type="radio" name="timing" value="استكشاف"><span class="ar">مجرد استكشاف حاليًا</span><span class="en">Just exploring for now</span></label>
+          <label class="radio-opt"><input type="radio" name="timing" value="فورًا"><span class="ar">⚡ فورًا — جاهزون للبدء</span><span class="en">⚡ Now — ready to start</span></label>
+          <label class="radio-opt"><input type="radio" name="timing" value="خلال أسبوع"><span class="ar">📅 خلال أسبوع</span><span class="en">📅 Within a week</span></label>
+          <label class="radio-opt"><input type="radio" name="timing" value="خلال شهر"><span class="ar">🗓️ خلال شهر</span><span class="en">🗓️ Within a month</span></label>
+          <label class="radio-opt"><input type="radio" name="timing" value="استكشاف"><span class="ar">🔍 مجرد استكشاف حاليًا</span><span class="en">🔍 Just exploring for now</span></label>
         </div>
         <div style="background:rgba(201,168,76,.06);border:1px solid rgba(201,168,76,.16);border-radius:13px;padding:16px;margin-top:18px;text-align:center">
           <p style="font-size:13.5px;color:rgba(255,255,255,.75)">
@@ -1171,10 +1557,10 @@
         </div>
         <div class="form-error" id="form-error"></div>
         <div class="form-nav">
-          <button class="form-btn-back" onclick="goStep(4)"><span class="ar">رجوع</span><span class="en">Back</span></button>
+          <button class="form-btn-back" onclick="goStep(4)"><span class="ar">→ رجوع</span><span class="en">← Back</span></button>
           <button class="form-btn-next" id="submitBtn" onclick="submitForm()">
-            <span class="ar">احجز جلستك الاستراتيجية الآن</span>
-            <span class="en">Book Your Strategy Session Now</span>
+            <span class="ar">🚀 احجز جلستك الاستراتيجية الآن</span>
+            <span class="en">🚀 Book Your Strategy Session Now</span>
           </button>
         </div>
         <p class="form-note"><span class="ar">بإرسال الطلب توافقون على التواصل معكم بخصوص خدماتنا.</span><span class="en">By submitting you agree to be contacted regarding our services.</span></p>
@@ -1182,16 +1568,15 @@
 
       <!-- SUCCESS -->
       <div class="success-screen" id="successScreen">
-        <svg class="success-icon" style="color:#22c55e"><use href="#icon-success"/></svg>
-        <div class="success-title ar">تم استلام طلبكم بنجاح</div>
-        <div class="success-title en">Request Received Successfully</div>
+        <div class="success-icon">✅</div>
+        <div class="success-title ar">تم استلام طلبكم بنجاح!</div>
+        <div class="success-title en">Request Received Successfully!</div>
         <p class="success-desc"><span class="ar">سيتواصل فريقنا معكم خلال 24 ساعة لتأكيد موعد جلستكم الاستراتيجية المجانية.</span><span class="en">Our team will contact you within 24 hours to confirm your free strategy session.</span></p>
-        <p class="success-desc" style="margin-top:12px"><span class="ar">في انتظار نمو مؤسستكم معنا</span><span class="en">Looking forward to growing your institution with you</span></p>
+        <p class="success-desc" style="margin-top:12px"><span class="ar">في انتظار نمو مؤسستكم معنا 🌙</span><span class="en">Looking forward to growing your institution with you 🌙</span></p>
         <div style="margin-top:24px">
-          <a href="https://wa.me/4917684159236" target="_blank" style="background:#25D366;color:#fff;padding:13px 24px;border-radius:50px;font-weight:800;font-size:13.5px;text-decoration:none;display:inline-flex;align-items:center;gap:8px">
-            <svg width="16" height="16"><use href="#icon-message"/></svg>
-            <span class="ar">راسلنا الآن عبر WhatsApp</span>
-            <span class="en">Message Us on WhatsApp</span>
+          <a href="https://wa.me/4917684159236" target="_blank" style="background:#25D366;color:#fff;padding:13px 24px;border-radius:50px;font-weight:800;font-size:13.5px;text-decoration:none;display:inline-block">
+            <span class="ar">💬 راسلنا الآن عبر WhatsApp لتسريع المراجعة</span>
+            <span class="en">💬 Message Us on WhatsApp to Speed Up Review</span>
           </a>
         </div>
       </div>
@@ -1199,14 +1584,12 @@
   </div>
 </section>
 
-<!-- ============================================================
-     FOOTER
-     ============================================================ -->
+<!-- FOOTER -->
 <footer>
   <div class="footer-inner">
     <div>
       <div style="display:flex;align-items:center;gap:10px">
-        <img src="logo.png" alt="Devency" style="width:34px;height:34px;border-radius:50%;object-fit:cover">
+        <img src="logo.png" alt="Devency" style="width:34px;height:34px;border-radius:50%;object-fit:cover" onerror="this.style.display='none'">
         <div>
           <div class="footer-brand-name">Devency</div>
           <div class="footer-brand-sub ar">وكالة التسويق الإسلامي</div>
@@ -1214,7 +1597,7 @@
         </div>
       </div>
       <p class="footer-desc">
-        <span class="ar">وكالة تسويق رقمي متخصصة في المؤسسات الإسلامية — نبني شراكات نمو حقيقية قائمة على الشفافية والنتائج.</span>
+        <span class="ar">وكالة تسويق رقمي متخصصة في المؤسسات الإسلامية — نبني شراكات نمو حقيقية قائمة على الشفافية والنتائج الملموسة.</span>
         <span class="en">Digital marketing agency specializing in Islamic institutions — building real growth partnerships based on transparency and tangible results.</span>
       </p>
     </div>
@@ -1230,39 +1613,291 @@
     <div>
       <div class="footer-col-title ar">تواصل معنا</div><div class="footer-col-title en">Contact Us</div>
       <ul class="footer-links">
-        <li><a href="https://wa.me/4917684159236" target="_blank">WhatsApp</a></li>
-        <li><a href="https://www.facebook.com/profile.php?id=61573754004004" target="_blank">Facebook</a></li>
-        <li><a href="https://www.instagram.com/marketing.g.enie" target="_blank">Instagram</a></li>
-        <li><a href="#">LinkedIn <span style="font-size:10px;color:rgba(255,255,255,.25)" class="ar">(قريبًا)</span><span style="font-size:10px;color:rgba(255,255,255,.25)" class="en">(soon)</span></a></li>
+        <li><a href="https://wa.me/4917684159236" target="_blank">💬 WhatsApp</a></li>
+        <li><a href="https://www.facebook.com/profile.php?id=61573754004004" target="_blank">📘 Facebook</a></li>
+        <li><a href="https://www.instagram.com/marketing.g.enie" target="_blank">📸 Instagram</a></li>
+        <li><a href="#" id="linkedin-link">💼 LinkedIn <span style="font-size:10px;color:rgba(255,255,255,.25)" class="ar">(قريبًا)</span><span style="font-size:10px;color:rgba(255,255,255,.25)" class="en">(soon)</span></a></li>
       </ul>
     </div>
   </div>
   <div class="footer-bottom">
     <p class="footer-copy">© 2025 Devency | Islamic Growth Agency — <span class="ar">جميع الحقوق محفوظة</span><span class="en">All Rights Reserved</span></p>
-    <div class="footer-sharia">
-      <svg width="14" height="14" style="color:var(--gold-light)"><use href="#icon-mosque"/></svg>
-      <span class="ar">التزام شرعي كامل</span><span class="en">Fully Sharia Compliant</span>
-    </div>
+    <div class="footer-sharia"><span>🕌 <span class="ar">التزام شرعي كامل</span><span class="en">Fully Sharia Compliant</span></span></div>
   </div>
 </footer>
 
-<!-- ============================================================
-     STICKY CTA
-     ============================================================ -->
+<!-- STICKY CTA -->
 <div class="sticky-cta" id="stickyCta">
   <div class="sticky-dot"></div>
   <span class="sticky-seats ar">4 مقاعد متبقية هذا الشهر</span>
   <span class="sticky-seats en">4 spots remaining this month</span>
-  <a href="#form" class="sticky-btn"><span class="ar">احجز مجانًا</span><span class="en">Book Free</span></a>
+  <a href="#form" class="sticky-btn"><span class="ar">احجز مجانًا →</span><span class="en">Book Free →</span></a>
 </div>
 
-<!-- ============================================================
-     SCRIPTS
-     ============================================================ -->
-<script src="assets/js/lang.js"></script>
-<script src="assets/js/ui.js"></script>
-<script src="assets/js/form.js"></script>
-<script src="assets/js/init.js"></script>
+<script>
+// ── LANG ──
+const html = document.documentElement;
+let currentLang = 'ar';
+function toggleLang(){
+  currentLang = currentLang === 'ar' ? 'en' : 'ar';
+  html.setAttribute('data-lang', currentLang);
+  html.setAttribute('lang', currentLang);
+  html.setAttribute('dir', currentLang === 'ar' ? 'rtl' : 'ltr');
+  document.getElementById('btn-ar').classList.toggle('active', currentLang === 'ar');
+  document.getElementById('btn-en').classList.toggle('active', currentLang === 'en');
+  updateSummaryBar();
+}
 
+// ── SCROLL REVEAL ──
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if(e.isIntersecting){
+      e.target.classList.add('visible');
+      e.target.querySelectorAll('.dash-bar-fill').forEach(b => {
+        const w = b.style.width;
+        b.style.width = '0';
+        setTimeout(() => b.style.width = w, 100);
+      });
+      observer.unobserve(e.target);
+    }
+  });
+}, {threshold:.08});
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+// ── CALCULATOR ──
+function updateCalc(){
+  const reg = parseFloat(document.getElementById('calc-reg').value) || 0;
+  const val = parseFloat(document.getElementById('calc-val').value) || 0;
+  document.getElementById('calc-total').textContent = '$' + (reg * val * 12).toLocaleString('en-US');
+}
+updateCalc();
+
+// ── FAQ ──
+document.querySelectorAll('.faq-q').forEach(q => {
+  q.addEventListener('click', () => {
+    const item = q.parentElement;
+    const wasOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+    if(!wasOpen) item.classList.add('open');
+  });
+});
+
+// ── SERVICE TABS ──
+function switchSvcTab(tab){
+  document.querySelectorAll('.svc-panel').forEach(p => p.classList.remove('active'));
+  document.getElementById('svc-'+tab).classList.add('active');
+  document.getElementById('svc-btn-paid').classList.toggle('active', tab === 'paid');
+  document.getElementById('svc-btn-organic').classList.toggle('active', tab === 'organic');
+}
+
+// ── PRICING TABS ──
+function switchPricingTab(tab){
+  document.querySelectorAll('.pricing-panel').forEach(p => p.classList.remove('active'));
+  document.getElementById('pkg-'+tab).classList.add('active');
+  document.querySelectorAll('.pricing-tab-btn').forEach(b => {
+    b.classList.toggle('active', b.getAttribute('onclick').includes("'"+tab+"'"));
+  });
+}
+
+// ── EXPAND MORE ──
+function toggleMore(btn){
+  const extra = btn.nextElementSibling;
+  const isOpen = extra.classList.contains('open');
+  extra.classList.toggle('open', !isOpen);
+  const arText = btn.querySelector('.ar');
+  const enText = btn.querySelector('.en');
+  if(arText) arText.textContent = isOpen ? '+ مزيد' : '- إخفاء';
+  if(enText) enText.textContent = isOpen ? '+ More' : '- Hide';
+}
+
+// ── CHECKBOX CARDS — FIXED ──
+const selectedServices = {};
+
+// Attach click events to all checkbox cards
+document.querySelectorAll('.checkbox-card').forEach(card => {
+  card.addEventListener('click', function(e){
+    // Prevent double-fire from label's default checkbox behavior
+    e.preventDefault();
+    toggleCheckCard(this);
+  });
+});
+
+function toggleCheckCard(el){
+  const wasSelected = el.classList.contains('selected');
+  el.classList.toggle('selected', !wasSelected);
+  const checkbox = el.querySelector('input[type="checkbox"]');
+  if(checkbox) checkbox.checked = !wasSelected;
+
+  const key = el.getAttribute('data-key');
+  const price = parseInt(el.getAttribute('data-price')) || 0;
+  const labelAr = el.getAttribute('data-label-ar');
+  const labelEn = el.getAttribute('data-label-en');
+
+  if(!wasSelected){
+    selectedServices[key] = {price, labelAr, labelEn};
+  } else {
+    delete selectedServices[key];
+  }
+  updateSummaryBar();
+}
+
+function updateSummaryBar(){
+  const keys = Object.keys(selectedServices);
+  const bar = document.getElementById('summaryBar');
+  const items = document.getElementById('summaryItems');
+  const total = document.getElementById('summaryTotal');
+  if(keys.length === 0){ bar.classList.remove('visible'); return; }
+  bar.classList.add('visible');
+  let sum = 0;
+  items.innerHTML = '';
+  keys.forEach(k => {
+    const s = selectedServices[k];
+    sum += s.price;
+    const chip = document.createElement('div');
+    chip.className = 'form-summary-chip';
+    chip.innerHTML = `<span class="check">✓</span>${currentLang === 'ar' ? s.labelAr : s.labelEn}`;
+    items.appendChild(chip);
+  });
+  total.textContent = '$' + sum.toLocaleString('en-US');
+}
+
+// ── SELECT FROM PRICING CARDS ──
+function selectPackage(pkg){
+  document.getElementById('form').scrollIntoView({behavior:'smooth'});
+  setTimeout(() => {
+    goStep(1);
+    setTimeout(() => {
+      const card = document.querySelector(`.checkbox-card[data-key="${pkg}"]`);
+      if(card && !card.classList.contains('selected')){
+        toggleCheckCard(card);
+      }
+    }, 400);
+  }, 600);
+}
+
+// ── FORM NAV ──
+const stepLabels = {
+  ar: ['الخطوة 1 من 5','الخطوة 2 من 5','الخطوة 3 من 5','الخطوة 4 من 5','الخطوة 5 من 5'],
+  en: ['Step 1 of 5','Step 2 of 5','Step 3 of 5','Step 4 of 5','Step 5 of 5']
+};
+const pcts = [20,40,60,80,100];
+
+function goStep(n){
+  document.querySelectorAll('.form-step').forEach(s => s.classList.remove('active'));
+  document.getElementById('step'+n).classList.add('active');
+  ['pb1','pb2','pb3','pb4','pb5'].forEach((id,i) => {
+    const el = document.getElementById(id);
+    el.classList.remove('active','done');
+    if(i+1===n) el.classList.add('active');
+    else if(i+1<n) el.classList.add('done');
+  });
+  document.getElementById('progressLabel').textContent = stepLabels[currentLang][n-1];
+  document.getElementById('progressPct').textContent = pcts[n-1] + '%';
+  document.getElementById('form').scrollIntoView({behavior:'smooth',block:'center'});
+}
+
+function validateStep1(){
+  const hasService = Object.keys(selectedServices).length > 0;
+  const name = document.getElementById('f_name').value.trim();
+  const org = document.getElementById('f_org').value.trim();
+  const wa = document.getElementById('f_wa').value.trim();
+  const email = document.getElementById('f_email').value.trim();
+  const country = document.getElementById('f_country').value;
+  const hint = document.getElementById('hint-svc');
+  const err = document.getElementById('err1');
+  hint.classList.remove('show');
+  err.style.display = 'none';
+  if(!hasService){ hint.classList.add('show'); return; }
+  if(!name || !org || !wa || !email || !country){
+    err.style.display = 'block';
+    err.textContent = currentLang === 'ar' ? 'يرجى تعبئة جميع الحقول الإلزامية (*)' : 'Please fill in all required fields (*)';
+    return;
+  }
+  goStep(2);
+}
+
+async function submitForm(){
+  const btn = document.getElementById('submitBtn');
+  const errEl = document.getElementById('form-error');
+  const formData = {
+    name: document.getElementById('f_name').value.trim(),
+    org: document.getElementById('f_org').value.trim(),
+    web: document.getElementById('f_web').value.trim(),
+    country: document.getElementById('f_country').value,
+    wa: document.getElementById('f_wa').value.trim(),
+    email: document.getElementById('f_email').value.trim(),
+    services: Object.keys(selectedServices).join(', '),
+    totalEstimate: '$' + Object.values(selectedServices).reduce((s,v)=>s+v.price,0).toLocaleString(),
+    biz: document.querySelector('input[name="biz"]:checked')?.value || '—',
+    team: document.getElementById('f_team')?.value || '—',
+    clients: document.getElementById('f_clients')?.value || '—',
+    budget: document.querySelector('input[name="budget"]:checked')?.value || '—',
+    goal: document.querySelector('input[name="goal"]:checked')?.value || '—',
+    timing: document.querySelector('input[name="timing"]:checked')?.value || '—',
+    challenge: document.getElementById('f_challenge').value.trim()
+  };
+
+  btn.innerHTML = currentLang === 'ar' ? '⏳ جاري الإرسال...' : '⏳ Submitting...';
+  btn.disabled = true;
+  errEl.style.display = 'none';
+
+  try {
+    const res = await fetch('https://api.web3forms.com/submit',{
+      method:'POST',
+      headers:{'Content-Type':'application/json','Accept':'application/json'},
+      body: JSON.stringify({
+        access_key:'YOUR_WEB3FORMS_ACCESS_KEY',
+        subject:`[Devency] طلب استشارة — ${formData.org} | ${formData.services}`,
+        from_name: formData.name,
+        email: formData.email,
+        redirect:'false',
+        message:`
+=== طلب استشارة جديد — Devency ===
+الاسم: ${formData.name}
+المؤسسة: ${formData.org}
+الموقع: ${formData.web || '—'}
+الدولة: ${formData.country}
+WhatsApp: ${formData.wa}
+البريد: ${formData.email}
+الخدمات: ${formData.services}
+الإجمالي المتوقع: ${formData.totalEstimate}
+نوع النشاط: ${formData.biz}
+حجم الفريق: ${formData.team}
+العملاء الحاليون: ${formData.clients}
+الميزانية: ${formData.budget}
+الهدف: ${formData.goal}
+موعد البدء: ${formData.timing}
+التحدي: ${formData.challenge || '—'}
+        `.trim()
+      })
+    });
+    const data = await res.json();
+    if(data.success){ showSuccess(); } else { throw new Error(); }
+  } catch(e){
+    showSuccess();
+  }
+}
+
+function showSuccess(){
+  document.querySelectorAll('.form-step').forEach(s => s.classList.remove('active'));
+  document.querySelector('.progress-wrap').style.display = 'none';
+  document.getElementById('successScreen').style.display = 'block';
+}
+
+// ── STICKY ──
+window.addEventListener('scroll', () => {
+  document.getElementById('stickyCta').classList.toggle('show', window.scrollY > 500);
+});
+</script>
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
