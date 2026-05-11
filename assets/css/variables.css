@@ -1,0 +1,27 @@
+/* ============================================================
+   variables.css — متغيرات الألوان والتصميم
+   ============================================================ */
+:root {
+  --emerald:        #0d4f3c;
+  --emerald-mid:    #166a4f;
+  --emerald-light:  #1a8a64;
+  --emerald-glow:   rgba(13, 79, 60, 0.12);
+
+  --gold:           #c9a84c;
+  --gold-light:     #e2c06e;
+  --gold-pale:      rgba(201, 168, 76, 0.10);
+
+  --cream:          #faf8f3;
+  --off-white:      #f3f0ea;
+  --slate:          #4a5568;
+  --slate-light:    #718096;
+  --dark:           #14191e;
+  --white:          #ffffff;
+
+  --shadow-soft:    0 4px 24px rgba(0, 0, 0, 0.06);
+  --shadow-card:    0 8px 40px rgba(0, 0, 0, 0.10);
+  --shadow-gold:    0 4px 20px rgba(201, 168, 76, 0.25);
+
+  --radius:         18px;
+  --radius-lg:      26px;
+}
