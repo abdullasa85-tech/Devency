@@ -1842,16 +1842,27 @@ async function submitForm(){
   errEl.style.display = 'none';
 
   try {
-    const res = await fetch('https://api.web3forms.com/submit',{
-      method:'POST',
-      headers:{'Content-Type':'application/json','Accept':'application/json'},
+    const SHEETS_URL = 'https://script.google.com/macros/s/AKfycbyQrE6L2HEG3ikyFpA1uMNhbX9e_esUMaGP0sHdKr2vy2YFSduAUvVZ58Eezg74mW1b/exec';
+
+    // إرسال لـ Google Sheets
+    await fetch(SHEETS_URL, {
+      method: 'POST',
+      mode: 'no-cors',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(formData)
+    });
+
+    // إرسال لـ web3forms
+    await fetch('https://api.web3forms.com/submit', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
       body: JSON.stringify({
-        access_key:'f6fc69ca-ae99-4996-ad2e-b6f6378beddf',
-        subject:`[Devency] طلب استشارة — ${formData.org} | ${formData.services}`,
+        access_key: 'f6fc69ca-ae99-4996-ad2e-b6f6378beddf',
+        subject: `[Devency] طلب استشارة — ${formData.org} | ${formData.services}`,
         from_name: formData.name,
         email: formData.email,
-        redirect:'false',
-        message:`
+        redirect: 'false',
+        message: `
 === طلب استشارة جديد — Devency ===
 الاسم: ${formData.name}
 المؤسسة: ${formData.org}
@@ -1871,9 +1882,10 @@ WhatsApp: ${formData.wa}
         `.trim()
       })
     });
-    const data = await res.json();
-    if(data.success){ showSuccess(); } else { throw new Error(); }
-  } catch(e){
+
+    showSuccess();
+
+  } catch(e) {
     showSuccess();
   }
 }
