@@ -1,0 +1,138 @@
+/* ============================================================
+   base.css — Reset + Typography + Animations
+   ============================================================ */
+@import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&family=Cairo:wght@300;400;600;700;900&family=DM+Sans:wght@300;400;500;600;700&display=swap');
+
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Tajawal', sans-serif;
+  background: var(--cream);
+  color: var(--dark);
+  overflow-x: hidden;
+}
+
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-thumb { background: var(--emerald); border-radius: 2px; }
+
+/* ── Lang Direction ── */
+[data-lang="ar"] { direction: rtl; }
+[data-lang="en"] { direction: ltr; }
+[data-lang="en"] .section-title { text-align: left; }
+
+.ar { display: block; }
+.en { display: none; }
+[data-lang="en"] .ar { display: none; }
+[data-lang="en"] .en { display: block; }
+
+/* ── Section Base ── */
+section { padding: 90px 5%; }
+
+.section-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  background: var(--emerald-glow);
+  border: 1px solid rgba(13, 79, 60, 0.14);
+  padding: 7px 16px;
+  border-radius: 50px;
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--emerald);
+  letter-spacing: 1.8px;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+}
+.section-tag-dot {
+  width: 5px;
+  height: 5px;
+  background: var(--emerald);
+  border-radius: 50%;
+}
+
+.section-title {
+  font-family: 'Cairo', sans-serif;
+  font-size: clamp(24px, 3vw, 40px);
+  font-weight: 900;
+  color: var(--dark);
+  line-height: 1.22;
+  margin-bottom: 12px;
+}
+.section-title em {
+  color: var(--emerald);
+  font-style: normal;
+}
+
+.section-sub {
+  font-size: clamp(13.5px, 1.3vw, 16px);
+  color: var(--slate);
+  line-height: 1.72;
+}
+
+/* ── Reveal Animation ── */
+.reveal {
+  opacity: 0;
+  transform: translateY(26px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ── Keyframes ── */
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-13px); }
+}
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.35; }
+}
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* ── Buttons ── */
+.btn-primary {
+  background: linear-gradient(135deg, var(--gold), var(--gold-light));
+  color: var(--dark);
+  padding: 14px 24px;
+  border-radius: 50px;
+  font-weight: 800;
+  font-size: 14px;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: 0.3s;
+  box-shadow: var(--shadow-gold);
+}
+.btn-primary:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 28px rgba(201, 168, 76, 0.4);
+}
+
+.btn-secondary {
+  background: rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  color: #fff;
+  padding: 14px 24px;
+  border-radius: 50px;
+  font-weight: 600;
+  font-size: 14px;
+  text-decoration: none;
+  transition: 0.3s;
+}
+.btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.13);
+  transform: translateY(-3px);
+}
