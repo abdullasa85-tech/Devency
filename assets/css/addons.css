@@ -1,0 +1,144 @@
+/* ============================================================
+   addons.css — الخدمات الإضافية والباندل
+   ============================================================ */
+.addons-bg { background: var(--off-white); }
+
+.addon-note {
+  max-width: 680px;
+  margin: 0 auto 36px;
+  text-align: center;
+  font-size: 14px;
+  color: var(--slate);
+  line-height: 1.7;
+  background: var(--white);
+  border-radius: var(--radius);
+  padding: 18px 22px;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+}
+.addon-note strong { color: var(--emerald); }
+
+.addons-grid {
+  max-width: 1000px;
+  margin: 0 auto 40px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+}
+
+.addon-card {
+  background: var(--white);
+  border-radius: var(--radius);
+  padding: 26px;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  transition: 0.3s;
+  position: relative;
+  overflow: hidden;
+}
+.addon-card::before {
+  content: '';
+  position: absolute;
+  top: 0; right: 0; left: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--emerald), var(--gold));
+}
+.addon-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-card); }
+
+.addon-icon  { width: 36px; height: 36px; margin-bottom: 12px; }
+.addon-title { font-size: 15px; font-weight: 800; color: var(--dark); margin-bottom: 5px; }
+.addon-price { font-size: 14px; font-weight: 700; color: var(--emerald); margin-bottom: 8px; }
+.addon-desc  { font-size: 13px; color: var(--slate); line-height: 1.6; }
+
+.addon-cta {
+  margin-top: 14px;
+  display: inline-block;
+  font-size: 12.5px;
+  font-weight: 700;
+  color: var(--emerald);
+  text-decoration: none;
+  border: 1px solid rgba(13, 79, 60, 0.2);
+  padding: 7px 16px;
+  border-radius: 50px;
+  transition: 0.25s;
+  cursor: pointer;
+  background: none;
+  font-family: 'Tajawal', sans-serif;
+}
+.addon-cta:hover { background: var(--emerald); color: #fff; }
+
+/* ── BUNDLE ── */
+.bundle-card {
+  max-width: 760px;
+  margin: 0 auto;
+  background: linear-gradient(135deg, #14191e, #1c2229);
+  border: 2px solid rgba(201, 168, 76, 0.4);
+  border-radius: var(--radius-lg);
+  padding: 36px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 0 50px rgba(201, 168, 76, 0.12), 0 8px 40px rgba(0, 0, 0, 0.3);
+}
+.bundle-card::before {
+  content: '';
+  position: absolute;
+  top: -60px; left: -60px;
+  width: 200px; height: 200px;
+  background: radial-gradient(circle, rgba(201, 168, 76, 0.12), transparent 65%);
+}
+.bundle-badge {
+  display: inline-block;
+  background: linear-gradient(135deg, #ef4444, #dc2626);
+  color: #fff;
+  font-size: 10px;
+  font-weight: 800;
+  padding: 5px 14px;
+  border-radius: 50px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  margin-bottom: 14px;
+  animation: pulse 2s infinite;
+}
+.bundle-title {
+  font-family: 'Cairo', sans-serif;
+  font-size: clamp(20px, 2.5vw, 30px);
+  font-weight: 900;
+  color: #fff;
+  margin-bottom: 8px;
+}
+.bundle-price-row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+}
+.bundle-old-price {
+  font-size: 20px;
+  color: rgba(255, 255, 255, 0.35);
+  text-decoration: line-through;
+  font-family: 'DM Sans', sans-serif;
+}
+.bundle-new-price {
+  font-size: 44px;
+  font-weight: 900;
+  color: var(--gold-light);
+  font-family: 'DM Sans', sans-serif;
+  line-height: 1;
+}
+.bundle-includes {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+.bundle-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 8px 14px;
+  border-radius: 50px;
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.8);
+}
+.bundle-check { width: 14px; height: 14px; color: var(--gold); }
